@@ -1,0 +1,52 @@
+.backarrowofprofile{
+    position: absolute;
+    top: 7.44%;
+    left: 7.7778%;
+}
+.photofprofile{
+    position: absolute;
+    top:18.1%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.nameofprofile{
+    position: absolute;
+    white-space: nowrap;
+    top:28%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.nameofprofile p{
+    color: white;
+    font-size:  20px;
+}
+.address{
+    position: absolute;
+    white-space: nowrap;
+    top:34.1%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.address p{
+    color: white;
+    font-size:  13px;
+}
+.itemsofprofile{
+    position: absolute;
+    top:42%;
+    height:20.5%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.setting{
+    position: absolute;
+    top:0%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.toclient{
+    position: absolute;
+    bottom:0%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}

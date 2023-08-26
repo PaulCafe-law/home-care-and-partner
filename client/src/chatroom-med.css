@@ -1,0 +1,70 @@
+.headerofchatroom{
+    position:absolute;
+    top:0%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    height:15.77%;
+}
+.contentofchatheader{
+    position:absolute;
+    z-index: 2;
+    top:0%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    height:100%;
+    width: 100%;
+}
+.backarrowofchatroom{
+    position: absolute;
+    top: 47.2%;
+    left: 7.7778%;
+}
+.photofchatroom{
+    position: absolute;
+    top: 47.2%;
+    left: 23%;
+}
+.nameofchatroom{
+    position: absolute;
+    top: 40%;
+    left: 42.2%;
+}
+.nameofchatroom p{
+    color: white;
+    font-size:20px;
+}
+.bottomofchatroom{
+    position: absolute;
+    top:92.3%;
+}
+.bottomcontentofchatroom{
+    position: absolute;
+    z-index: 2;
+    top:0;
+    height: 100%;
+    width: 100%;
+}
+.messagebg{
+    position: absolute;
+    left:28.8%;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+.sendbtn{
+    position: absolute;
+    left:88.54%;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+.functions{
+    position: absolute;
+    left:4.72%;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+.camera{
+    position: absolute;
+    left:16.32%;
+    top: 50%;
+    transform: translate(0%,-50%);
+}

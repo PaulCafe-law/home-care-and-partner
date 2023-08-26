@@ -1,0 +1,112 @@
+.header{
+    position: absolute; 
+    top: 7.4vh;
+    left: 7.77vw;
+    width: 89.167vw;
+    height:7.82%
+}
+.left-align{
+    text-align: left;
+}
+.hello{
+    position: absolute;
+    z-index: 2;
+    top: 0%;
+    font-size: 18px;
+    margin-top: 0;
+    
+}
+.nameClient{
+    position: absolute;
+    z-index: 2;
+    top: 11.47%;
+    left: 0%;
+    /* top:10.64vh; */
+    font-weight: bold;
+    font-size: 36px;
+    margin-top: 25px;
+}
+.photofhome{
+    position: absolute;
+    z-index: 2;
+    top: 0%;
+    left: 82.866%;
+}
+.search{
+    position: absolute;
+    top:18.333%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+.searchicon{
+    position: absolute;
+    z-index: 2;
+    top:50%;
+    left:4.7%;
+    transform: translate(0%, -50%);
+}
+.searchtextofhome{
+    position: absolute;
+    z-index: 2;
+    top:45%;
+    left:15.1%;
+    margin-top: 0;
+    transform: translate(0%, -50%);
+    color:8AA0BC;
+}
+.searchfilter{
+    position: absolute;
+    z-index: 2;
+    top:50%;
+    left:87.46%;
+    transform: translate(0%, -50%);
+}
+.serviceItem{
+    position: absolute;
+    top:25.77%;
+    left:5.647%;
+    width: 65.67%;
+    height:13.642%;
+}
+.items{
+    position: absolute;
+    top:30.256%;
+    left:0%;
+    width:100%;
+    height: 67.107%;
+}
+.introduction{
+    position: absolute;
+    top:0%;
+    left:0%;
+}
+.prescription{
+    position: absolute;
+    top:0%;
+    left:34.9%;
+}
+.social{
+    position: absolute;
+    top:0%;
+    left:69.8%;
+}
+.ad{
+    position: absolute;
+    top:43.257%;
+    left:50%;
+    transform: translate(-50%, 0%);
+}
+.appointment{
+    position: absolute;
+    top:68.82%;
+    left:5.647%;
+    width: 94.353%;
+    height:20.22%;
+}
+.navbar{
+    position: absolute;
+    top:91.282%;
+    left:18.472%;
+    width: 62.778%;
+    height: 6.154%;
+}

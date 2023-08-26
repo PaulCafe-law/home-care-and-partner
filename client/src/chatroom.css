@@ -1,0 +1,160 @@
+.headerofchatroom{
+    position:absolute;
+    top:0%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    height:15.77%;
+}
+.contentofchatheader{
+    position:absolute;
+    z-index: 2;
+    top:0%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    height:100%;
+    width: 100%;
+}
+.backarrowofchatroom{
+    position: absolute;
+    top: 47.2%;
+    left: 7.7778%;
+}
+.photofchatroom{
+    position: absolute;
+    top: 47.2%;
+    left: 23%;
+}
+.nameofchatroom{
+    position: absolute;
+    top: 40%;
+    left: 42.2%;
+}
+.nameofchatroom p{
+    color: white;
+    font-size:20px;
+}
+.chat-wrap{
+    position: relative;
+    width: 100%; 
+    height: 77.3vh;
+    top: 15vh;
+    /* bottom: 20vh; */
+    overflow-y:scroll; 
+    /* background-color: #f4f4f4; */
+    background-color: #F4ECE8;
+    text-align:center;
+}
+.chat-wrap-main{
+    padding: 0 25px;
+    padding-bottom: 70vh;
+}
+.chat-con{
+    position: relative;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    /* top: 10vh; */
+}
+/* 讓message可以一直往下 */
+.clearfix:after{
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden
+}
+.clearfix{
+    /* *zoom:1; */
+    zoom:1;
+}
+
+.fr{
+    float:right;
+}
+.fl{
+    float: left;
+}
+.rela{
+    position: relative;
+}
+.abs{
+    position:absolute;
+}
+
+.chat-item {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+.item-left .message {
+    background: #979ae5;
+    color: white;
+    font-size: 15px;
+    border-radius: 0px 15px 15px 15px;
+    margin-top: 20px;
+    padding: 15px !important;
+    font-weight: 400;
+}
+.item-right .message {
+    background: white; 
+    color: #413177;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 15px 0px 15px 15px;
+    padding: 15px !important;
+    margin-top: 20px;
+    margin-right: 0;
+}
+.item-left .uname {
+    font-size: 12px;
+    left: 0px;
+    top: 0;
+    color: gray;
+}
+.item-right .uname {
+    font-size: 12px;
+    right: 0px;
+    top: 0;
+    color: gray;
+}
+.chat-item .message {
+    display: block;
+    padding: 10px;
+}
+.bottomofchatroom{
+    position: absolute;
+    top:92.3%;
+}
+.bottomcontentofchatroom{
+    position: absolute;
+    z-index: 2;
+    top:0;
+    height: 100%;
+    width: 100%;
+}
+.messagebg{
+    position: absolute;
+    left:28.8%;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+.sendbtn{
+    position: absolute;
+    left:88.54%;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+.functions{
+    position: absolute;
+    left:4.72%;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+.camera{
+    position: absolute;
+    left:16.32%;
+    top: 50%;
+    transform: translate(0%,-50%);
+}

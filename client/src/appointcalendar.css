@@ -1,0 +1,54 @@
+.headerofappointcalendar{
+    position:absolute;
+    top:0%;
+    width: 86.1%;
+    height: 10.64%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.backarrowofappointcalendar{
+    position: absolute;
+    top:30%;
+    left:0%;
+}
+.titleofappointcalendar{
+    position: absolute;
+    top:10%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.body{
+    position: absolute;
+    top:12%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    height:40%;
+}
+.timeoption{
+    position: absolute;
+    top:61%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.topic{
+    position: absolute;
+    left: 8.055%;
+    top:0%;
+}
+.topic h2{
+    position: absolute;
+    left: 8.055%;
+    color: white;
+}
+.timeselect{
+    position: absolute;
+    top:25%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.appointbtn{
+    position: absolute;
+    top:65%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}

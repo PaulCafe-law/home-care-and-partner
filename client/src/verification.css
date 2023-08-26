@@ -1,0 +1,85 @@
+.topofinitialpage{
+    position: absolute;
+    width: 100%;
+    height: 24.49%;
+    left:50%;
+    transform: translate(-50%,0%);
+}
+.posterofinitialpage{
+    position: absolute;
+    top:22%;
+    left:50%;
+    transform: translate(-50%,0%);
+}
+.titleofappointment{
+    position: absolute;
+    z-index: 2;
+    top:17.18%;
+    left:50%;
+    transform: translate(-50%,0%);
+}
+.introfinitialpage{
+    position: absolute;
+    top:0%;
+    left:0%;
+    height:100%;
+    width:100%;
+}
+.textofinitialpage{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+.textofinitialpage p{
+    text-align: center;
+    white-space: nowrap;
+    font-family: 'Odor Mean Chey';
+}
+.mainsignupbody{
+    position: absolute;
+    top:35.51%;
+    left:50%;
+    transform: translate(-50%,0%);
+    width:84.44%;
+    height:30%;
+}
+.gender{
+    position: absolute;
+    top:0%;
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+}
+.phonenumber{
+    position: absolute;
+    top:26%;
+    left:50%;
+    transform: translate(-50%,0%);
+    
+}
+.phonenumber p{
+    text-align: left;
+}
+.sendbtnofverification{
+    position: absolute;
+    top:65%;
+    left:50%;
+    transform: translate(-50%,0%);
+}
+.verificationcode{
+    position: absolute;
+    top:90%;
+    left:50%;
+    transform: translate(-50%,0%);
+}
+.verificationcode p{
+    text-align: left;
+}
+.backandnext{
+    position: absolute;
+    top:85.38%;
+    left:50%;
+    transform: translate(-50%,0%);
+    display: flex;
+}
