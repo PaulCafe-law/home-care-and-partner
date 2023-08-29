@@ -2,8 +2,10 @@
     position:absolute;
     top:7.307%;
     width: 86.1%;
+    left: 50%;
+    transform: translate(-50%,0%);
 }
-.backarrow{
+.backarrowofschedule{
     position: absolute;
     top:7.307%;
     left:0%;
@@ -22,10 +24,11 @@
     right:0%;
     top:25%;
 }
-.date{
+.dateofschedule{
     position: absolute;
-    top:16%;
-    left:5%;
+    top:15.9%;
+    width: 100%;
+    left:0%;
 }
 .appointments{
     position: absolute;

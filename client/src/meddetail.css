@@ -64,34 +64,53 @@
     left: 79%;
     
 }
-.about{
+.aboutofmeddetail{
     position: absolute;
-    top:52.7%;
-    left:7.778%;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,0%);
     width:88.61%;
     height:20.64%;
 }
-.about h3{
+.aboutofmeddetail h3{
     text-align: left;
 }
-.about p{
+.aboutofmeddetail p{
     text-align: left;
     color:4A545E;
     font-size: 18px;
     line-height: 135%;
 }
-.timeselection{
+.dropdownofmeddetail{
     position: absolute;
-    top:75.9%;
+    top:62%;
+    left:50%;
+    transform: translate(-50%,0%);
+    width:88.61%;
+}
+.dropdownofmeddetail h2{
+    text-align: left;
+}
+.dropdownofmeddetail p{
+    text-align: left;
+}
+.timeselectionofmeddetail{
+    position: absolute;
+    top:80%;
+    left:50%;
+    transform: translate(-50%,0%);
+    height:20%;
+}
+.timeselectionofmeddetail h2{
+    text-align: left;
+    margin: 0;
+}
+.timecontentofmeddetail{
+    position: absolute;
+    top:37%;
     left:50%;
     transform: translate(-50%,0%);
 }
-.timecontent{
-    position: absolute;
-    top:5%;
-    left:50%;
-    transform: translate(-50%,0%);
-}
-.timecontent p{
+.timecontentofmeddetail h2{
     text-align: left;
 }

@@ -46,6 +46,7 @@ const InitialPage = (handleCurrentPageChange) => {
             if (response.data.success) {
               // 登入成功，執行你想要的操作
               console.log('登入成功');
+              sessionStorage.setItem('user_id', response.data.user_id);
               sessionStorage.setItem('email', email);
               navigate('/homepage');
             } else {

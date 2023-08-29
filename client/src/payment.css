@@ -1,0 +1,88 @@
+.headerofpayment{
+    position:absolute;
+    top:7.307%;
+    width: 86.1%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.backarrowofpayment{
+    position: absolute;
+    top:7.307%;
+    left:0%;
+}
+.title{
+    position: absolute;
+    top:0%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.title h2{
+    margin-top: 10%;
+}
+.bodyofpayment{
+    position: absolute;
+    top:17.56%;
+    width: 100%;
+    height:61.88%;
+}
+.servicenameofpayment{
+    position: absolute;
+    top:0;
+    height:15.75%;
+    width:100%;
+}
+.amountofpayment{
+    position: absolute;
+    top:17.6%;
+    height:15.75%;
+    width:100%;
+}
+.discountofpayment{
+    position: absolute;
+    top:35.22%;
+    height:15.75%;
+    width:100%;
+}
+.totalofpayment{
+    position: absolute;
+    top:52.4%;
+    height:15.75%;
+    width:100%;
+}
+.methodsofpayment{
+    position: absolute;
+    top:69%;
+    height:35%;
+    width:100%;
+}
+.methodsbtn {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:25%;
+    left:7.78%;
+    height:70%;
+    align-items: flex-start; /* 讓 label 靠左對齊 */
+}
+/* 單選框選項樣式 */
+.methodsbtn label {
+    display: flex;
+    align-items: center;
+    gap: 12.5%; /* 設定選項之間的間距 */
+    cursor: pointer;
+}
+
+/* 單選框選項的選框樣式 */
+.methodsbtn input[type="radio"] {
+    width: 16px; /* 設定選框寬度 */
+    height: 16px; /* 設定選框高度 */
+    border-radius: 50%; /* 設定圓角，使選框變成圓形 */
+    border: 1px solid #ccc; /* 設定選框的邊框 */
+}
+.confirmpaymentbtn{
+    position: absolute;
+    top:87.56%;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}

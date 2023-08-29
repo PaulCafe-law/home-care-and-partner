@@ -22,6 +22,18 @@ const Meddetail = (handleCurrentPageChange) => {
     const [rating,setRating] = useState('rating');
     const [pnumber,setPnumber] = useState('pnumber');
     const [bio,setBio] = useState('bio words');
+    // 狀態用於追踪選擇的選項
+    const [selectedOption, setSelectedOption] = useState('');
+    // 選項的數據
+    const [options, setOptions] = useState([]);
+    // 當選擇項目改變時的處理函式
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+        
+    };
+    console.log("selectedOption:"+selectedOption)
+    sessionStorage.setItem("selectedOption",selectedOption)
+
     useEffect(() => {
     // 使用 Axios 透過professional_id向後端取得職業
     axios.get(`http://localhost:8080/professional-backend-spec/${professional_id}`)
@@ -39,6 +51,22 @@ const Meddetail = (handleCurrentPageChange) => {
         console.error(error);
         });
     }, []);
+
+    useEffect(() => {
+        // 在這裡呼叫 API，並根據返回的數據更新 options 狀態
+        axios.get(`http://localhost:8080/get-professional-servicename/${professional_id}`) // 替換為實際的 API 端點
+          .then(response => {
+            // 在上述代碼中，response.data 是從 API 返回的數據陣列，
+            // 而 serviceNames 則是根據每個數據元素的 service_name 屬性創建的新陣列。
+            // 這樣，您就可以得到一個只包含 service_name 的陣列
+            const serviceNames = response.data.map(service => service.service_name);
+            setOptions(serviceNames);
+            
+          })
+          .catch(error => {
+            console.error('發生錯誤', error);
+          });
+      }, [professional_id]); // 在 professional_id 更改時重新執行 useEffect
 
     return(
         <div>
@@ -96,12 +124,12 @@ const Meddetail = (handleCurrentPageChange) => {
                         <p style={{
                             fontSize:'14px',
                             marginBottom:'0'
-                        }}>歷年病患</p>
+                        }}>平台個案</p>
                         <p style={{
                             fontSize:'18px',
                             fontWeight:'bolder',
                             marginTop:'10%'
-                        }}>{pnumber}</p>
+                        }}>{pnumber}次</p>
                     </div>
                 </div>
                 <div className="expyr">
@@ -137,29 +165,38 @@ const Meddetail = (handleCurrentPageChange) => {
                     </div>
                 </div>
             </div>
-            <div className="about">
+            <div className="aboutofmeddetail">
                 <h3>about</h3>
                 <p>{bio}</p>
             </div>
-            <div className="timeselection">
+            <div className="dropdownofmeddetail">
+                <h2>step1:&nbsp;選擇服務項目</h2>
+                <select value={selectedOption} onChange={handleOptionChange}>
+                    <option value="">請選擇一個選項</option>
+                    {options.map((option, index) => (
+                        <option key={index} value={option}>
+                            {option}
+                        </option>
+                    ))}
+                </select>
+                {/* <p>您選擇的服務是: {selectedOption}</p> */}
+            </div>
+            <div className="timeselectionofmeddetail">
+                <h2>step2:&nbsp;預約時間</h2>
                 <Link to='/appointcalendar'>
                     <div className="timebg">
                         <img
                             src={timebg}
                         ></img>
                     </div>
-                    <div className="timecontent">
-                        <p style={{
-                            fontSize:'14px',
-                            marginBottom:'5%',
-                            color:'black'
-                        }}>今日可預約時間</p>
-                        <p style={{
-                            fontSize:'17px',
+                    <div className="timecontentofmeddetail">
+                        <h2 style={{
+                            
                             fontWeight:'bold',
                             marginTop:'0',
-                            color:'black'
-                        }}>6 PM - 9 PM</p>
+                            color:'black',
+                            whiteSpace:'nowrap'
+                        }}>&nbsp;點我查看時間表</h2>
                     </div>
                 </Link>
                 

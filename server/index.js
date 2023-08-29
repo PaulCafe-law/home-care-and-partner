@@ -101,7 +101,7 @@ app.post('/checkLogin', (req, res) => {
       const user = results[0];
       if (user.password === password) {
         // 密碼正確，回傳成功
-        res.json({ success: true, message: '登入成功' });
+        res.json({ success: true, message: '登入成功',  user_id: user.user_id });
       } 
       else {
         // 密碼錯誤，回傳失敗
@@ -244,6 +244,83 @@ app.get('/professional-backend-spec/:professional_id', (req, res) => {
     res.json(results);
   });
 });
+
+app.get('/get-professional-servicename/:professional_id', (req, res) => {
+  const targetProfessionalId = req.params.professional_id;
+  con.query('SELECT service_name FROM services WHERE professional_id = ?', [targetProfessionalId], function (error, results, fields) {
+    if (error) {
+      throw error;
+    }
+    console.log("Request for services data received!");
+    res.json(results);
+  });
+});
+
+// meddetail部分結束
+
+// appointcalendar部分開始
+
+
+app.get('/get-service-hours/:professional_id/:service_name', (req, res) => {
+  const targetProfessionalId = req.params.professional_id;
+  const targetServiceName = req.params.service_name;
+  const targetDate = req.query.date; // 從 query 字串中取得日期
+
+  // 使用 targetDate 查詢對應日期的服務時段
+  con.query('SELECT start_time FROM servicehours WHERE professional_id = ? AND service_name = ? AND day = ?', [targetProfessionalId, targetServiceName, targetDate], function (error, results, fields) {
+      if (error) {
+          throw error;
+      }
+      // 對取得的結果按照時間排序
+      const sortedResults = results.sort((a, b) => a.start_time.localeCompare(b.start_time));
+      console.log("Request for service hours data received!");
+      res.json(sortedResults);
+      console.log("sortedResults:"+sortedResults)
+  });
+});
+
+
+
+app.get('/get-service-price/:professional_id/:service_name', (req, res) => {
+  const targetProfessionalId = req.params.professional_id;
+  const targetServiceName = req.params.service_name;
+  
+
+  // 使用 targetDate 查詢對應日期的服務時段
+  con.query('SELECT base_price FROM services WHERE professional_id = ? AND service_name = ? ', [targetProfessionalId, targetServiceName], function (error, results, fields) {
+      if (error) {
+          throw error;
+      }
+      
+      console.log("Request for service price received!");
+      res.json(results);
+      console.log("results:"+results)
+  });
+});
+
+
+// payment頁面開始
+app.post('/create-appointment', (req, res) => {
+  const { user_id, professional_id, service_name, appointment_date, appointment_start_time, status } = req.body;
+
+  con.query(
+    'INSERT INTO appointments (user_id, professional_id, service_name, appointment_date, appointment_start_time, status) VALUES (?, ?, ?, ?, ?, ?)',
+    [user_id, professional_id, service_name, appointment_date, appointment_start_time, status],
+    (error, results) => {
+      if (error) {
+        console.error('新增預約失敗', error);
+        res.json({ success: false, message: '新增預約失敗' });
+      } else {
+        console.log('新增預約成功');
+        res.json({ success: true, message: '新增預約成功' });
+      }
+    }
+  );
+});
+
+
+
+
 
 
 

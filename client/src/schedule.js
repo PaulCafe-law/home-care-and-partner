@@ -18,11 +18,14 @@ import report from './images-home/report.svg';
 import notification from './images-home/notification.svg';
 
 const Schedule = (handleCurrentPageChange) => {
-
+    const formattedDate = sessionStorage.getItem("formattedDate")
     return(
-        <div>
+        <div style={{
+            width:'360px',
+            height: '780px'
+        }}>
             <div className="header">
-                {/* <div className="backarrow">
+                {/* <div className="backarrowofschedule">
                     <img
                         src={backArrow}
                     ></img>
@@ -36,10 +39,8 @@ const Schedule = (handleCurrentPageChange) => {
                     ></img>
                 </div>  
             </div>
-            <div className="date">
-                <img
-                    src={dates}
-                ></img>
+            <div className="dateofschedule">
+                <h2>{formattedDate}</h2>
             </div>
             <div className="appointments">
                 <div className="client1">

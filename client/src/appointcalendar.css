@@ -24,18 +24,25 @@
     transform: translate(-50%,0%);
     height:40%;
 }
+/* 也可以針對不同的模式（月曆、年曆、十年曆、世紀曆）進行調整 */
+.react-calendar {
+    border-radius: 20px; /* 針對月曆模式的圓角大小 */
+}
+.react-calendar__tile {
+    border-radius: 5px; /* 設定日期方塊的圓角大小 */
+}
 .timeoption{
     position: absolute;
     top:61%;
     left: 50%;
     transform: translate(-50%,0%);
 }
-.topic{
+.topicofcalendar{
     position: absolute;
     left: 8.055%;
     top:0%;
 }
-.topic h2{
+.topicofcalendar h2{
     position: absolute;
     left: 8.055%;
     color: white;
@@ -44,11 +51,67 @@
     position: absolute;
     top:25%;
     left: 50%;
+    width:85%;
     transform: translate(-50%,0%);
+    height: 32.6%;
+}
+.timelements {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 添加間隔 */
+    height:100%;
+}
+.row1 {
+    display: flex; /* 設定容器為 Flexbox 佈局 */
+    justify-content: space-around; /* 平均分布子元素並且居中 */
+    align-items: stretch; /* 讓子元素填滿容器的高度 */
+    height: 40.38%; /* 調整高度 */
+    top:0;
+}
+.row1 button{
+    background-color: #1C6BA4;
+    color: white;
+    border: 2px solid white; /* 加粗白色邊框 */
+    border-radius: 8px; /* 調整邊框角度 */
+    /* 新增以下部分，為 :active 狀態定義底色 */
+    transition: background-color 0.2s; /* 添加過渡效果 */
+    
+}
+.row2 {
+    display: flex; /* 設定容器為 Flexbox 佈局 */
+    justify-content: space-around; /* 平均分布子元素並且居中 */
+    align-items: stretch; /* 讓子元素填滿容器的高度 */
+    height: 40.38%; /* 調整高度 */
+    bottom:0;
+}
+.row2 button{
+    background-color: #1C6BA4;
+    color: white;
+    border: 2px solid white; /* 加粗白色邊框 */
+    border-radius: 8px; /* 調整邊框角度 */
+    /* 新增以下部分，為 :active 狀態定義底色 */
+    transition: background-color 0.2s; /* 添加過渡效果 */
+    
+}
+.row1 .active{
+    background-color: #E09F1F; /* 在 :active 狀態時改變底色 */
+}
+.row2 .active {
+    background-color: #E09F1F; /* 在 :active 狀態時改變底色 */
 }
 .appointbtn{
     position: absolute;
     top:65%;
     left: 50%;
     transform: translate(-50%,0%);
+}
+.textofappointbtn{
+    position: absolute;
+    top:15%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.textofappointbtn p{
+    white-space: nowrap;
+    text-align: left;
 }

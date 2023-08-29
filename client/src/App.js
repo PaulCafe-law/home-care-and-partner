@@ -24,6 +24,8 @@ import Verification from './verification';
 import ClientDetailMed from './clientdetail-med';
 import ChatroomMed from './chatroom-med';
 import SurveyForm from './surveyform';
+import Payment from './payment';
+
 const App = () => {
   // const [currentPage, setCurrentPage] = useState("schedule");
   // const handleCurrentPageChange = (currentPage) => {
@@ -53,6 +55,7 @@ const App = () => {
         <Route path="clientdetailmed" element={<ClientDetailMed />} />
         <Route path="chatroommed" element={<ChatroomMed />} />
         <Route path="surveyform" element={<SurveyForm />} />
+        <Route path="payment" element={<Payment />} />
       </Routes>
     </div>
     
