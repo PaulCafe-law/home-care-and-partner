@@ -192,7 +192,7 @@ const HomePage = (handleCurrentPageChange) => {
                     position: 'absolute',
                     left: '29.65%'
                 }}>
-                    <Link to='/schedule'>
+                    <Link to='/calendars'>
                         <img
                             src={schedule}
                         ></img>

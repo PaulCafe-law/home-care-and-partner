@@ -310,13 +310,71 @@ app.post('/create-appointment', (req, res) => {
       if (error) {
         console.error('新增預約失敗', error);
         res.json({ success: false, message: '新增預約失敗' });
-      } else {
+      } 
+      else {
         console.log('新增預約成功');
         res.json({ success: true, message: '新增預約成功' });
       }
     }
   );
 });
+
+
+
+// schedule頁面開始
+
+
+app.get('/get-appointments/:user_id/:formattedDate', async (req, res) => {
+  const user_id = req.params.user_id;
+  const formattedDate = req.params.formattedDate;
+
+  try {
+    const results = await new Promise((resolve, reject) => {
+      con.query('SELECT professional_id, service_name, appointment_start_time FROM appointments WHERE user_id = ? AND appointment_date = ?', 
+        [user_id, formattedDate], (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve(results);
+          console.log("results:"+results)
+        });
+    });
+    // 
+    // await Promise.all 是一個用於等待多個 Promise 同時完成的 JavaScript 語法。
+    // 當你有多個需要同時執行的非同步操作（例如多個 API 請求），並且需要等待它們都完成後進行後續操作時，可以使用 await Promise.all
+    const appointmentData = await Promise.all(results.map(async appointment => {
+      const { professional_id, service_name, appointment_start_time } = appointment;
+
+      const professionalInfo = await new Promise((resolve, reject) => {
+        con.query('SELECT full_name, specialization FROM medicalprofessional WHERE professional_id = ?', 
+          [professional_id], (error, results) => {
+            if (error) {
+              reject(error);
+              return;
+            }
+            resolve(results[0]); // 假設結果是一筆資料
+          });
+      });
+
+      return {
+        professional_id,
+        service_name,
+        appointment_start_time,
+        full_name: professionalInfo.full_name,
+        specialization: professionalInfo.specialization
+      };
+    }));
+    // 將 appointmentData 依照 appointment_start_time 排序
+    appointmentData.sort((a, b) => a.appointment_start_time.localeCompare(b.appointment_start_time));
+    res.json(appointmentData);
+  } catch (error) {
+    console.error('資料庫查詢錯誤', error);
+    res.status(500).json({ error: '資料庫查詢錯誤' });
+  }
+});
+
+
 
 
 
