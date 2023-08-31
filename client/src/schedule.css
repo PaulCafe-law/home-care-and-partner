@@ -56,21 +56,14 @@
     height:100%;
 }
 .appointItem{
-    /* position: absolute;
-    width:100%;
-    height: 31%;
-    top:0%;
-    left:50%;
-    transform: translate(-50%,0%); */
+    
     position: relative; 
-    /* relative跟height 31%使得預約項目可以一直往下疊加 */
+    
     width: 100%;
     height:31%;
-    /* background-color: #f4f4f4; */
-    /* border: 1px solid #ddd; */
-    /* border-radius: 18% 10% 10% 18%; */
+    
     padding: 0px;
-    /* margin-bottom: 10%; */
+    
 }
 
 

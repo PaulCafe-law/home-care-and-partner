@@ -16,7 +16,7 @@ const Payment = (handleCurrentPageChange) =>{
     const serviceName = sessionStorage.getItem("selectedOption")
     const appointment_date = sessionStorage.getItem("formattedDate")
     const start_time = sessionStorage.getItem("appoint_starttime")
-    const status = "等待回應"
+    const status = "等待回應";
     console.log("professionalId:"+professionalId)
     console.log("serviceName:"+serviceName)
     // 新增到appointments table的data

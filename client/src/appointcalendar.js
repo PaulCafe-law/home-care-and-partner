@@ -18,6 +18,10 @@ import axios from 'axios';
 const AppointCalendar = (handleCurrentPageChange) =>{
     // 處理日曆功能
     const [selectedDate, setSelectedDate] = useState(new Date());
+    useEffect(()=>{
+        // 先初始formattedDate，避免使用者先直接按幾點而導致沒有存日期進sessionStorage
+        sessionStorage.setItem("formattedDate",formatDate(new Date()))
+    },[]);
     //讓今天的資料不用重新整理就可以出現    
     useEffect(() => {
         // 一開始就呼叫資料

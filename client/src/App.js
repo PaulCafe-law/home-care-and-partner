@@ -26,6 +26,9 @@ import ChatroomMed from './chatroom-med';
 import SurveyForm from './surveyform';
 import Payment from './payment';
 import Calendars from './calendar';
+import CalendarsMed from './calendar-med';
+import CalendarToScheduleMed from './calendartoschedule-med';
+
 const App = () => {
   // const [currentPage, setCurrentPage] = useState("schedule");
   // const handleCurrentPageChange = (currentPage) => {
@@ -57,6 +60,8 @@ const App = () => {
         <Route path="surveyform" element={<SurveyForm />} />
         <Route path="payment" element={<Payment />} />
         <Route path="calendars" element={<Calendars />} />
+        <Route path="calendarsmed" element={<CalendarsMed />} />
+        <Route path="calendartoschedulemed" element={<CalendarToScheduleMed />} />
       </Routes>
     </div>
     

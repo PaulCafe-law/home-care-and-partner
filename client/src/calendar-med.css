@@ -1,0 +1,57 @@
+.headerofcalendar{
+    position:absolute;
+    top:0%;
+    width: 86.1%;
+    height: 10.64%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.backarrowofcalendar{
+    position: absolute;
+    top:30%;
+    left:0%;
+}
+.titleofcalendar{
+    position: absolute;
+    top:10%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.body{
+    position: absolute;
+    top:12%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    height:40%;
+}
+/* 也可以針對不同的模式（月曆、年曆、十年曆、世紀曆）進行調整 */
+.react-calendar {
+    border-radius: 20px; /* 針對月曆模式的圓角大小 */
+}
+.react-calendar__tile {
+    border-radius: 5px; /* 設定日期方塊的圓角大小 */
+}
+.timeoption{
+    position: absolute;
+    top:61%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.topicofcalendar{
+    position: absolute;
+    left: 8.055%;
+    top:0%;
+}
+.topicofcalendar h2{
+    position: absolute;
+    left: 8.055%;
+    color: white;
+}
+.body{
+    position: absolute;
+    height:70%;
+}
+.link-no-underline {
+    text-decoration: none;
+  }
+  

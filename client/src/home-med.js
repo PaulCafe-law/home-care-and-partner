@@ -25,13 +25,15 @@ const HomePageMed = (handleCurrentPageChange) => {
     const name = sessionStorage.getItem('name');
     // const gender = sessionStorage.getItem('gender');
     console.log("name:"+name )
+    const email = sessionStorage.getItem('email');
     // console.log("gender:"+gender )
     const [specialization, setSpecialization] = useState('TEST職業');
+    const [professionalId, setProfessionalId] = useState('');
     useEffect(() => {
-        // 使用 Axios 向後端取得名字
+        // 使用 Axios 向後端取得職業
         axios.get(`http://localhost:8080/user-specialization/${name}`)
           .then(response => {
-            // 從回應中取得名字並設定到狀態中
+            // 從回應中取得職業並設定到狀態中
             setSpecialization(response.data[0].specialization); // 假設回應是一個包含 username 的陣列
           })
           .catch(error => {
@@ -40,6 +42,20 @@ const HomePageMed = (handleCurrentPageChange) => {
       }, []);
 
     sessionStorage.setItem('specialization', specialization);
+
+    useEffect(() => {
+        // 使用 Axios 向後端取得職業
+        axios.get(`http://localhost:8080/user-professional-id/${email}`)
+          .then(response => {
+            // 從回應中取得職業並設定到狀態中
+            setProfessionalId(response.data[0].professional_id); // 假設回應是一個包含 username 的陣列
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }, []);
+
+    sessionStorage.setItem('professional_id', professionalId);
 
     return(
         <div>
@@ -121,7 +137,7 @@ const HomePageMed = (handleCurrentPageChange) => {
                         
                     </div>
                     <div className='social'>
-                        <Link to='/appointmentmed'>
+                        <Link to='/calendarsmed'>
                             <img
                                 src={social}
                             ></img>
@@ -183,7 +199,7 @@ const HomePageMed = (handleCurrentPageChange) => {
                     position: 'absolute',
                     left: '29.65%'
                 }}>
-                    <Link to='/schedulemed'>
+                    <Link to='/calendartoschedulemed'>
                         <img
                             src={schedule}
                         ></img>

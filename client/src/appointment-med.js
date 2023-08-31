@@ -17,15 +17,55 @@ import schedule from './images-home/schedule.svg';
 import report from './images-home/report.svg';
 import notification from './images-home/notification.svg';
 
+// 跟後端有關
+import axios from 'axios';
+
 const AppointmentMed = (handleCurrentPageChange) => {
+    const professional_id = sessionStorage.getItem('professional_id')
+    const formattedDate = sessionStorage.getItem("formattedDate")
+    console.log("professional_id:"+professional_id)
+    console.log("formattedDate:"+formattedDate)
+
+    const [appointmentData, setAppointmentData] = useState([]);
+    useEffect(() => {
+        // 從後端取得預約資料
+        axios.get(`http://localhost:8080/get-appointments-med/${professional_id}/${formattedDate}`)
+        .then(response => {
+            setAppointmentData(response.data);
+            // console.log("response.data:"+response.data)
+            console.log("response.data:"+response.data)
+        })
+        .catch(error => {
+            console.error('發生錯誤', error);
+        });
+    }, []);
+
+
+    // 按下accept的動作
+    const handleAcceptClick = async (appointmentId) => {
+        console.log("appointmentId:"+appointmentId)
+        try {
+          const response = await axios.post('http://localhost:8080/update-appointment-status', {
+            appointment_id: appointmentId,
+            new_status: '已確認'
+          });
+    
+          // 在這裡處理成功回應，例如重新載入預約資料等等
+        } catch (error) {
+          console.error('發生錯誤', error);
+          // 在這裡處理錯誤
+        }
+      };
 
     return(
         <div>
             <div className="header">
                 <div className="backarrowofappointmed">
-                    <img
-                        src={backArrow}
-                    ></img>
+                    <Link to='/calendarsmed'>
+                        <img
+                            src={backArrow}
+                        ></img>
+                    </Link>
                 </div>
                 <div className="title">
                     <h2>預約要求</h2>
@@ -36,163 +76,68 @@ const AppointmentMed = (handleCurrentPageChange) => {
                     ></img>
                 </div>  
             </div>
-            <div className="date">
-                <img
-                    src={dates}
-                ></img>
+            <div className="dateofappointment-med">
+                <h2>{formattedDate}</h2>
             </div>
-            <div className="appointments">
-                <div className="client1">
-                    <img
-                        style={{
-                            position: 'absolute',
-                            top:'0%',
-                            left:'50%',
-                            transform: 'translate(-50%,0%)'
-                        }}
-                        src={line}
-                    ></img>
-                    <div className="body1">
-                        <img
-                            src={cardbg1}
-                        ></img>
-                        <div className="photo">
+            <div className='appointmentsmed-wrap'>
+                <div className='appointmentsmed'>
+                    <div className="appointmentsmed-container">
+                    {appointmentData.map((appointment, index) => (
+                        <div className="appointItemmed" key={index}>
                             <img
-                                src={clientpic1}
+                                style={{
+                                    position: 'absolute',
+                                    top: '0%',
+                                    left: '50%',
+                                    transform: 'translate(-50%,0%)'
+                                }}
+                                src={line}
                             ></img>
-                        </div>
-                        <div className="info">
-                            <p style={{
-                                fontSize:'14px'
-                            }}>12:30 PM</p>
-                            <p style={{
-                                fontSize:'19px',
-                                fontWeight:'2000',
-                                marginTop:'7%',
-                                marginBottom:'7%'
-                            }}>林先生</p>
-                            <p style={{
-                                fontSize:'15px',
-                                opacity:'0.65'
-                            }}>到府服務</p>
-                        </div>
-                        <div className="option">
-                            <Link to='/schedulemed'>
-                                <div className="accept">
+                            <div className="body1">
+                                <img
+                                    src={cardbg1}
+                                ></img>
+                                <div className="photo">
                                     <img
-                                    src={accept}
+                                        src={clientpic1}
                                     ></img>
                                 </div>
-                            </Link>
-                            <div className="deny">
-                                <img
-                                    src={deny}
-                                ></img>
+                                <div className="info">
+                                    <p style={{
+                                        fontSize: '14px'
+                                    }}>{appointment.appointment_start_time}</p>
+                                    <p style={{
+                                        fontSize: '19px',
+                                        fontWeight: '2000',
+                                        marginTop: '7%',
+                                        marginBottom: '0%'
+                                    }}>{appointment.username}{appointment.gender}</p>
+                                    <p style={{
+                                        fontSize: '15px',
+                                        opacity: '0.65'
+                                    }}>{appointment.service_name}</p>
+                                </div>
+                                <div className="optionofappointmentmed">
+                                    <Link to='/schedulemed'>
+                                        <div className="accept" onClick={() => handleAcceptClick(appointment.appointment_id)}>
+                                            <img
+                                                src={accept}
+                                            ></img>
+                                        </div>
+                                    </Link>
+                                    <div className="deny">
+                                        <img
+                                            src={deny}
+                                        ></img>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className="client2">
-                    <img
-                        style={{
-                            position: 'absolute',
-                            top:'0%',
-                            left:'50%',
-                            transform: 'translate(-50%,0%)'
-                        }}
-                        src={line}
-                    ></img>
-                    <div className="body1">
-                        <img
-                            src={cardbg2}
-                        ></img>
-                        <div className="photo">
-                            <img
-                                src={clientpic1}
-                            ></img>
-                        </div>
-                        <div className="info" style={{
-                            color:'black'
-                        }}>
-                            <p style={{
-                                fontSize:'14px'
-                            }}>12:30 PM</p>
-                            <p style={{
-                                fontSize:'19px',
-                                fontWeight:'2000',
-                                marginTop:'7%',
-                                marginBottom:'7%'
-                            }}>林先生</p>
-                            <p style={{
-                                fontSize:'15px',
-                                opacity:'0.65'
-                            }}>到府服務</p>
-                        </div>
-                        <div className="option">
-                            <div className="accept">
-                                <img
-                                src={accept}
-                                ></img>
-                            </div>
-                            <div className="deny">
-                                <img
-                                    src={deny}
-                                ></img>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="client3">
-                    <img
-                        style={{
-                            position: 'absolute',
-                            top:'0%',
-                            left:'50%',
-                            transform: 'translate(-50%,0%)'
-                        }}
-                        src={line}
-                    ></img>
-                    <div className="body1">
-                        <img
-                            src={cardbg3}
-                        ></img>
-                        <div className="photo">
-                            <img
-                                src={clientpic1}
-                            ></img>
-                        </div>
-                        <div className="info" style={{
-                            color:'black'
-                        }}>
-                            <p style={{
-                                fontSize:'14px'
-                            }}>12:30 PM</p>
-                            <p style={{
-                                fontSize:'19px',
-                                fontWeight:'2000',
-                                marginTop:'7%',
-                                marginBottom:'7%'
-                            }}>林先生</p>
-                            <p style={{
-                                fontSize:'15px',
-                                opacity:'0.65'
-                            }}>到府服務</p>
-                        </div>
-                        <div className="option">
-                            <div className="accept">
-                                <img
-                                src={accept}
-                                ></img>
-                            </div>
-                            <div className="deny">
-                                <img
-                                    src={deny}
-                                ></img>
-                            </div>
-                        </div>
+                    ))}
                     </div>
                 </div>
             </div>
+            
             <div className="navbar">
                 <div className='homepage'
                 style={{

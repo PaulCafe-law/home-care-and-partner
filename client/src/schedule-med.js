@@ -17,178 +17,103 @@ import schedule from './images-schedule-med/schedule.svg';
 import report from './images-home/report.svg';
 import notification from './images-home/notification.svg';
 
+// 跟後端有關
+import axios from 'axios';
+
 const ScheduleMed = (handleCurrentPageChange) => {
+    const professional_id = sessionStorage.getItem('professional_id')
+    const formattedDate = sessionStorage.getItem("formattedDate")
+    console.log("professional_id:"+professional_id)
+    console.log("formattedDate:"+formattedDate)
+
+    const [appointmentData, setAppointmentData] = useState([]);
+    useEffect(() => {
+        // 從後端取得預約資料
+        axios.get(`http://localhost:8080/get-schedule-appointments-med/${professional_id}/${formattedDate}`)
+        .then(response => {
+            setAppointmentData(response.data);
+            // console.log("response.data:"+response.data)
+            if(!response.data[0]){
+                console.log("今天沒有安排喔!")
+            }
+            else{
+                console.log("response.data[0].full_name:"+response.data[0].username)
+            }
+            
+        })
+        .catch(error => {
+            console.error('發生錯誤', error);
+        });
+    }, []);
+
 
     return(
         <div>
             <div className="header">
-                {/* <div className="backarrow">
-                    <img
-                        src={backArrow}
-                    ></img>
-                </div> */}
+                <div className="backarrowofschedulemed">
+                    <Link to='/calendartoschedulemed'>
+                        <img
+                            src={backArrow}
+                        ></img>
+                    </Link>
+                </div>
                 <div className="title">
                     <h2>時程安排</h2>
                 </div>
                 <div className="calendar">
-                    <img
-                        src={calendar}
-                    ></img>
+                    <Link to='/calendartoschedulemed'>
+                        <img
+                            src={calendar}
+                        ></img>
+                    </Link>
                 </div>  
             </div>
-            <div className="date">
-                <img
-                    src={dates}
-                ></img>
+            <div className="dateofschedule-med">
+                <h2>{formattedDate}</h2>
             </div>
-            <div className="appointments">
-                <div className="client1">
-                    <img
-                        style={{
-                            position: 'absolute',
-                            top:'0%',
-                            left:'50%',
-                            transform: 'translate(-50%,0%)'
-                        }}
-                        src={line}
-                    ></img>
-                    <div className="body1">
-                        <img
-                            src={cardbg1}
-                        ></img>
-                        <div className="photofmed">
+            <div className='schedulesmed-wrap'>
+                <div className='schedulesmed'>
+                    <div className="schedulesmed-container">
+                    {appointmentData.map((appointment, index) => (
+                        <div className="schedulesItemmed" key={index}>
                             <img
-                                src={clientpic1}
+                                style={{
+                                    position: 'absolute',
+                                    top: '0%',
+                                    left: '50%',
+                                    transform: 'translate(-50%,0%)'
+                                }}
+                                src={line}
                             ></img>
-                        </div>
-                        <div className="info">
-                            <p style={{
-                                fontSize:'14px'
-                            }}>12:30 PM</p>
-                            <p style={{
-                                fontSize:'19px',
-                                fontWeight:'2000',
-                                marginTop:'7%',
-                                marginBottom:'7%'
-                            }}>林先生</p>
-                            <p style={{
-                                fontSize:'15px',
-                                opacity:'0.65'
-                            }}>到府服務</p>
-                        </div>
-                        {/* <div className="option">
-                            <div className="accept">
+                            <div className="body1">
                                 <img
-                                src={accept}
+                                    src={cardbg1}
                                 ></img>
+                                <div className="photo">
+                                    <img
+                                        src={clientpic1}
+                                    ></img>
+                                </div>
+                                <div className="info">
+                                    <p style={{
+                                        fontSize: '14px'
+                                    }}>{appointment.appointment_start_time}</p>
+                                    <p style={{
+                                        fontSize: '19px',
+                                        fontWeight: '2000',
+                                        marginTop: '7%',
+                                        marginBottom: '0%'
+                                    }}>{appointment.username}{appointment.gender}</p>
+                                    <p style={{
+                                        fontSize: '15px',
+                                        opacity: '0.65'
+                                    }}>{appointment.service_name}</p>
+                                </div>
+                                
                             </div>
-                            <div className="deny">
-                                <img
-                                    src={deny}
-                                ></img>
-                            </div>
-                        </div> */}
+                        </div>
+                    ))}
                     </div>
-                </div>
-                <div className="client2">
-                    <img
-                        style={{
-                            position: 'absolute',
-                            top:'0%',
-                            left:'50%',
-                            transform: 'translate(-50%,0%)'
-                        }}
-                        src={line}
-                    ></img>
-                    {/* <div className="body1">
-                        <img
-                            src={cardbg2}
-                        ></img>
-                        <div className="photo">
-                            <img
-                                src={clientpic1}
-                            ></img>
-                        </div>
-                        <div className="info" style={{
-                            color:'black'
-                        }}>
-                            <p style={{
-                                fontSize:'14px'
-                            }}>12:30 PM</p>
-                            <p style={{
-                                fontSize:'19px',
-                                fontWeight:'2000',
-                                marginTop:'7%',
-                                marginBottom:'7%'
-                            }}>林先生</p>
-                            <p style={{
-                                fontSize:'15px',
-                                opacity:'0.65'
-                            }}>到府服務</p>
-                        </div>
-                        <div className="option">
-                            <div className="accept">
-                                <img
-                                src={accept}
-                                ></img>
-                            </div>
-                            <div className="deny">
-                                <img
-                                    src={deny}
-                                ></img>
-                            </div>
-                        </div>
-                    </div> */}
-                </div>
-                <div className="client3">
-                    <img
-                        style={{
-                            position: 'absolute',
-                            top:'0%',
-                            left:'50%',
-                            transform: 'translate(-50%,0%)'
-                        }}
-                        src={line}
-                    ></img>
-                    {/* <div className="body1">
-                        <img
-                            src={cardbg3}
-                        ></img>
-                        <div className="photo">
-                            <img
-                                src={clientpic1}
-                            ></img>
-                        </div>
-                        <div className="info" style={{
-                            color:'black'
-                        }}>
-                            <p style={{
-                                fontSize:'14px'
-                            }}>12:30 PM</p>
-                            <p style={{
-                                fontSize:'19px',
-                                fontWeight:'2000',
-                                marginTop:'7%',
-                                marginBottom:'7%'
-                            }}>林先生</p>
-                            <p style={{
-                                fontSize:'15px',
-                                opacity:'0.65'
-                            }}>到府服務</p>
-                        </div>
-                        <div className="option">
-                            <div className="accept">
-                                <img
-                                src={accept}
-                                ></img>
-                            </div>
-                            <div className="deny">
-                                <img
-                                    src={deny}
-                                ></img>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
             <div className="navbar">
@@ -209,9 +134,11 @@ const ScheduleMed = (handleCurrentPageChange) => {
                     position: 'absolute',
                     left: '29.65%'
                 }}>
+                    
                     <img
                         src={schedule}
                     ></img>
+                    
                 </div>
                 <div className='report'
                 style={{

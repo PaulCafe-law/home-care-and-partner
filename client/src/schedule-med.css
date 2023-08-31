@@ -3,7 +3,7 @@
     top:7.307%;
     width: 86.1%;
 }
-.backarrow{
+.backarrowofschedulemed{
     position: absolute;
     top:7.307%;
     left:0%;
@@ -22,12 +22,14 @@
     right:0%;
     top:25%;
 }
-.date{
+.dateofschedule-med{
     position: absolute;
-    top:16%;
-    left:5%;
+    top:15.9%;
+    width: 100%;
+    left:0%;
 }
-.appointments{
+/* 定義預約格子佔整個畫面擺放位置 */
+.schedulesmed-wrap{
     position: absolute;
     width:88.6%;
     height:60%;
@@ -35,7 +37,23 @@
     left:50%;
     transform: translate(-50%,0%);
 }
-.client1{
+.schedulesmed{
+    /* result-wrap */
+    display: flex;
+    justify-content: center;
+    padding: 0px 3%;
+    height: 95%;
+    top: 0%;
+    margin-top: 0px;
+    overflow-y:scroll;
+}
+.schedulesmed-container{
+    justify-content: center;
+    gap: 5%;
+    width:100%;
+    height:100%;
+}
+.schedulesItemmed{
     position: absolute;
     width:100%;
     height: 31%;
@@ -56,18 +74,7 @@
     height:100%;
     left:0%;
 }
-.client2{
-    position: absolute;
-    top:35.87%;
-    width:100%;
-    height: 31%;
-}
-.client3{
-    position: absolute;
-    top:70.37%;
-    width:100%;
-    height: 31%;
-}
+
 .photofmed{
     position: absolute;
     z-index: 3;
@@ -91,28 +98,8 @@
     margin-top:0;
     margin-bottom: 0;
 }
-.option{
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    left: 70%;
-    width:22%;
-    height:22.7%;
-}
-.accept{
-    position: absolute;
-    z-index: 2;
-    height:100%;
-    width:32.9%;
-    left:0%;
-}
-.deny{
-    position: absolute;
-    z-index: 2;
-    height:100%;
-    width:32.9%;
-    right:0%;
-}
+
+
 .navbar{
     position: absolute;
     top:91.282%;
