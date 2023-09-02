@@ -65,6 +65,7 @@ wss.on('connection', (socket) => {
     console.log("收到的data message:"+data.message);
     // console.log('收到的datatype:'+ data.type);
     console.log("xxxx");
+    //遍历了 WebSocket 服务器上的所有客户端连接
     wss.clients.forEach((client) => {
       console.log("傳去前端的data"+data);
       console.log("傳去前端的data name:"+data.username);
@@ -76,7 +77,73 @@ wss.on('connection', (socket) => {
   });
   
 });
+
+app.post('/add-message', async (req, res) => {
+  try {
+    // 从请求的 body 中获取消息数据
+    const { sender_id, receiver_id, content, timestamp } = req.body;
+
+    // 插入数据到 messages 表
+    const insertResult = await new Promise((resolve, reject) => {
+      con.query(
+        'INSERT INTO messages (sender_id, receiver_id, content, timestamp) VALUES (?, ?, ?, ?)',
+        [sender_id, receiver_id, content, timestamp],
+        (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve(results);
+        }
+      );
+    });
+
+    // 插入成功，返回成功响应
+    res.status(200).json({ message: 'Message added successfully' });
+  } catch (error) {
+    console.error('数据库操作错误', error);
+    res.status(500).json({ error: '数据库操作错误' });
+  }
+});
+
+app.get('/get-messages/:sender_id/:receiver_id', async (req, res) => {
+  const targetId1 = req.params.sender_id;
+  const targetId2 = req.params.receiver_id;
+  try {
+    // 在此查询数据库，获取 messages 表中的内容，按照 sender_id 和 receiver_id 进行筛选
+    const messages = await new Promise((resolve, reject) => {
+      con.query('SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?)',
+        [targetId1, targetId2, targetId2, targetId1], (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve(results);
+        });
+    });
+
+    // 返回获取到的消息数据
+    res.json(messages);
+  } catch (error) {
+    console.error('数据库查询错误', error);
+    res.status(500).json({ error: '数据库查询错误' });
+  }
+});
+
+
 // chatroom處理結束
+
+//chatroommed處理開始
+app.get('/get-user-backend-id/:client_id', (req, res) => {
+  const targetClientId = req.params.client_id; // 從路徑參數中取得傳遞的名稱
+  con.query('SELECT username FROM users WHERE user_id = ?',[targetClientId], function (error, results, fields) {
+    if (error) {
+      throw error;
+    }
+    console.log("clientname req有傳來!")
+    res.json(results);
+  });
+});
 
 // initialpage部分開始
 app.post('/checkLogin', (req, res) => {
@@ -141,6 +208,59 @@ app.get('/user-gender/:email', (req, res) => {
     }
   });
 });
+
+
+app.get('/get-nearest-appointment/:user_id/:formattedDate/:present_time', async (req, res) => {
+  const user_id = req.params.user_id;
+  const formattedDate = req.params.formattedDate;
+  const presentTime = req.params.present_time;
+
+  try {
+    const result = await new Promise((resolve, reject) => {
+      con.query('SELECT professional_id, service_name, appointment_start_time FROM appointments WHERE user_id = ? AND appointment_date = ? AND appointment_start_time > ? ORDER BY appointment_start_time ASC LIMIT 1', 
+        [user_id, formattedDate, presentTime], (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve(results[0]); // 只返回一行
+        });
+    });
+
+    if (!result) {
+      // 如果没有匹配的预约，可以返回空数据或适当的错误消息
+      res.json({ message: '没有符合条件的预约' });
+      return;
+    }
+
+    const { professional_id, service_name, appointment_start_time } = result;
+
+    const professionalInfo = await new Promise((resolve, reject) => {
+      con.query('SELECT full_name, specialization FROM medicalprofessional WHERE professional_id = ?', 
+        [professional_id], (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve(results[0]);
+        });
+    });
+
+    const response = {
+      professional_id,
+      service_name,
+      appointment_start_time,
+      full_name: professionalInfo.full_name,
+      specialization: professionalInfo.specialization
+    };
+
+    res.json(response);
+  } catch (error) {
+    console.error('数据库查询错误', error);
+    res.status(500).json({ error: '数据库查询错误' });
+  }
+});
+
 // homepage部分結束
 
 // profile部分開始
@@ -254,7 +374,7 @@ app.get('/professional-backend-name/:professional_id', (req, res) => {
 
 app.get('/professional-backend-spec/:professional_id', (req, res) => {
   const targetMedid = req.params.professional_id;
-  con.query('SELECT full_name, specialization, biography,experience_year, rating, patients_number FROM medicalprofessional WHERE professional_id = ?', [targetMedid], function (error, results, fields) {
+  con.query('SELECT full_name, user_id, specialization, biography,experience_year, rating, patients_number FROM medicalprofessional WHERE professional_id = ?', [targetMedid], function (error, results, fields) {
     if (error) {
       throw error;
     }

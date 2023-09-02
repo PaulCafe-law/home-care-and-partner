@@ -37,7 +37,7 @@ const ScheduleMed = (handleCurrentPageChange) => {
                 console.log("今天沒有安排喔!")
             }
             else{
-                console.log("response.data[0].full_name:"+response.data[0].username)
+                console.log("response.data[0].user_name:"+response.data[0].username)
             }
             
         })
@@ -73,9 +73,11 @@ const ScheduleMed = (handleCurrentPageChange) => {
             </div>
             <div className='schedulesmed-wrap'>
                 <div className='schedulesmed'>
+                    {/* appointments */}
                     <div className="schedulesmed-container">
+                        {/* appointments-container */}
                     {appointmentData.map((appointment, index) => (
-                        <div className="schedulesItemmed" key={index}>
+                        <div className="schedulesItemmed clearfix" key={index}>
                             <img
                                 style={{
                                     position: 'absolute',
@@ -86,29 +88,38 @@ const ScheduleMed = (handleCurrentPageChange) => {
                                 src={line}
                             ></img>
                             <div className="body1">
-                                <img
-                                    src={cardbg1}
-                                ></img>
-                                <div className="photo">
+                                <Link 
+                                    to={'/chatroommed'}
+                                    state={{
+                                        from: 'schedulemed',
+                                        client_id: appointment.user_id
+                                    }} // 使用 state 标识来源
+                                >
                                     <img
-                                        src={clientpic1}
+                                        src={cardbg1}
                                     ></img>
-                                </div>
-                                <div className="info">
-                                    <p style={{
-                                        fontSize: '14px'
-                                    }}>{appointment.appointment_start_time}</p>
-                                    <p style={{
-                                        fontSize: '19px',
-                                        fontWeight: '2000',
-                                        marginTop: '7%',
-                                        marginBottom: '0%'
-                                    }}>{appointment.username}{appointment.gender}</p>
-                                    <p style={{
-                                        fontSize: '15px',
-                                        opacity: '0.65'
-                                    }}>{appointment.service_name}</p>
-                                </div>
+                                    <div className="photo">
+                                        <img
+                                            src={clientpic1}
+                                        ></img>
+                                    </div>
+                                    <div className="info">
+                                        <p style={{
+                                            fontSize: '14px'
+                                        }}>{appointment.appointment_start_time}</p>
+                                        <p style={{
+                                            fontSize: '19px',
+                                            fontWeight: '2000',
+                                            marginTop: '7%',
+                                            marginBottom: '0%'
+                                        }}>{appointment.username}{appointment.gender}</p>
+                                        <p style={{
+                                            fontSize: '15px',
+                                            opacity: '0.65'
+                                        }}>{appointment.service_name}</p>
+                                    </div>
+                                </Link>
+                                
                                 
                             </div>
                         </div>

@@ -15,7 +15,8 @@ import homepage from './images-home/homepage.svg';
 import schedule from './images-home/schedule.svg';
 import report from './images-home/report.svg';
 import notification from './images-home/notification.svg';
-
+import cardbg1 from './images-appointment-med/cardbg1.svg';
+import clientpic1 from './images-appointment-med/clientpic1.svg';
 // 跟後端有關
 import axios from 'axios';
 
@@ -56,7 +57,44 @@ const HomePage = (handleCurrentPageChange) => {
             console.error(error);
           });
       }, []);
+
+    const user_id = sessionStorage.getItem('user_id')
+    const formattedDate = "2023-08-28";
+
     
+    console.log("user_id:"+user_id)
+    console.log("formattedDate:"+formattedDate)
+    // const [appointmentData, setAppointmentData] = useState([]);
+    const [medname, setMedName] = useState('MedName');
+    const [startTime, setStartTime] = useState('');
+    const [serviceName, setServiceName] = useState('');
+    const [specialization, setSpecialization] = useState('');
+    const [professionalid, setProfessionalid] = useState('');
+    const present_time = "09:00:00";
+    useEffect(() => {
+        // 從後端取得預約資料
+        axios.get(`http://localhost:8080/get-nearest-appointment/${user_id}/${formattedDate}/${present_time}`)
+        .then(response => {
+            // setAppointmentData(response.data);
+            // console.log("response.data:"+response.data)
+            setMedName(response.data.full_name); // 假設回應是一個包含 username 的陣列
+            setStartTime(response.data.appointment_start_time)
+            setServiceName(response.data.service_name)
+            setSpecialization(response.data.specialization)
+            setProfessionalid(response.data.professional_id)
+            if(!response.data){
+                console.log("今天沒有安排!")
+            }
+            else{
+                console.log("response.data.full_name:"+response.data.full_name)
+            }
+            
+        })
+        .catch(error => {
+            console.error('發生錯誤', error);
+        });
+    }, []);
+    sessionStorage.setItem("med_id",professionalid)
     
 
     return(
@@ -156,25 +194,40 @@ const HomePage = (handleCurrentPageChange) => {
                     src={ad}
                 ></img>
             </div>
-            <div className='appointment'>
+            <div className='appointmentoftodayAppointment'>
                 <h2 
                     style={{
                         position: 'absolute',
                         whiteSpace: 'nowrap',
                         marginTop: '0',
                         marginBottom: '0'
-                    }}>即將到來的預約
+                    }}>即將到來的最近預約
                 </h2>
-                <Link to='/appointment'>
-                    <img
-                        src={appointment1}
-                        style={{
-                            position: 'absolute',
-                            top: '23.46%',
-                            left: '0%'
-                        }}>
-                    </img>
-                </Link>
+                
+                    
+                
+                <div className="cardsoftodayAppointment" >
+                    
+                    <div className="schedulesItemoftodayAppointment" >
+                        <div className="bodytodayAppointment">
+                            <Link to='/appointment'>
+                                <img src={cardbg1}></img>
+                                <div className="photoftodayAppointment">
+                                    <img src={clientpic1}></img>
+                                </div>
+                                <div className="infoftodayAppointment">
+                                    <p style={{ fontSize: '14px' }}>{startTime}</p>
+                                    <p style={{ fontSize: '19px', fontWeight: '2000', marginTop: '3%', marginBottom: '0%' }}>
+                                        {medname}{specialization}
+                                    </p>
+                                    <p style={{ fontSize: '15px', opacity: '0.65' }}>{serviceName}</p>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                    
+                </div>
+
                 
             </div>
             <div className='navbar'>

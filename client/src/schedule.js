@@ -32,7 +32,13 @@ const Schedule = (handleCurrentPageChange) => {
         .then(response => {
             setAppointmentData(response.data);
             // console.log("response.data:"+response.data)
-            console.log("response.data[0].full_name:"+response.data[0].full_name)
+            if(!response.data[0]){
+                console.log("今天沒有安排!")
+            }
+            else{
+                console.log("response.data[0].full_name:"+response.data[0].full_name)
+            }
+            
         })
         .catch(error => {
             console.error('發生錯誤', error);
@@ -85,17 +91,26 @@ const Schedule = (handleCurrentPageChange) => {
                                     src={line}
                                 ></img>
                                 <div className="body1">
-                                    <img src={cardbg1}></img>
-                                    <div className="photofmed">
-                                        <img src={clientpic1}></img>
-                                    </div>
-                                    <div className="info">
-                                        <p style={{ fontSize: '14px' }}>{appointment.appointment_start_time}</p>
-                                        <p style={{ fontSize: '19px', fontWeight: '2000', marginTop: '5%', marginBottom: '0%' }}>
-                                            {appointment.full_name}{appointment.specialization}
-                                        </p>
-                                        <p style={{ fontSize: '15px', opacity: '0.65' }}>{appointment.service_name}</p>
-                                    </div>
+                                    <Link 
+                                        to={'/appointment'}
+                                        state={{
+                                            from: 'schedule',
+                                            professional_id: appointment.professional_id
+                                        }} // 使用 state 标识来源
+                                    >
+                                        <img src={cardbg1}></img>
+                                        <div className="photofmed">
+                                            <img src={clientpic1}></img>
+                                        </div>
+                                        <div className="info">
+                                            <p style={{ fontSize: '14px' }}>{appointment.appointment_start_time}</p>
+                                            <p style={{ fontSize: '19px', fontWeight: '2000', marginTop: '5%', marginBottom: '0%' }}>
+                                                {appointment.full_name}{appointment.specialization}{appointment.professional_id}
+                                            </p>
+                                            <p style={{ fontSize: '15px', opacity: '0.65' }}>{appointment.service_name}</p>
+                                        </div>
+                                    </Link>
+                                    
                                 </div>
                             </div>
                         ))}

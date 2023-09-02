@@ -54,12 +54,25 @@
     height:100%;
 }
 .schedulesItemmed{
-    position: absolute;
-    width:100%;
-    height: 31%;
-    top:0%;
-    left:50%;
-    transform: translate(-50%,0%);
+    
+    position: relative; 
+    
+    width: 100%;
+    height:31%;
+    
+    padding: 0px;
+}
+/* 讓message可以一直往下 */
+.clearfix:after{
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden
+}
+.clearfix{
+    /* *zoom:1; */
+    zoom:1;
 }
 .body1{
     position: absolute;

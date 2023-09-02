@@ -1,5 +1,5 @@
 import React, {Component, useState, useEffect, useRef} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import './appointment.css';
 import topbg from './images-meddetail/topbg.svg';
@@ -9,7 +9,55 @@ import medphoto from './images-meddetail/medphoto.svg';
 import infobg from './images-meddetail/infobg.svg';
 import timebg from './images-meddetail/timebg.svg';
 import chatroombtn from './images-appointment/chatroombtn.svg';
+
+// 跟後端有關
+import axios from 'axios';
+
 const Appointment = (handleCurrentPageChange) => {
+    // 跟backarrow有關的開始
+
+    // 使用 useLocation 钩子获取当前页面的路径
+    const location = useLocation();
+    
+    
+    // 检查 location.state 中的来源信息
+    const isFromSchedule = location.state && location.state.from === 'schedule';
+    console.log("location.state:"+location.state)
+    console.log("isFromSchedule:"+isFromSchedule)
+    // 根据来源信息设置返回链接的目标
+    const backLinkTarget = isFromSchedule ? '/schedule' : '/homepage';
+    var professional_id = sessionStorage.getItem('med_id');
+    if(isFromSchedule){
+        professional_id = location.state.professional_id;
+        sessionStorage.setItem('med_id',professional_id)
+    }
+    console.log("med_id:"+professional_id)
+    // 跟backarrow有關的結束
+    
+    const [name, setName] = useState('Name');
+    const [specialization,setSpecialization] = useState('Specialization');
+    const [expyear,setExpyear] = useState('ExpYear');
+    const [rating,setRating] = useState('rating');
+    const [pnumber,setPnumber] = useState('pnumber');
+    const [bio,setBio] = useState('bio words');
+    useEffect(() => {
+        // 使用 Axios 透過professional_id向後端取得職業
+        axios.get(`http://localhost:8080/professional-backend-spec/${professional_id}`)
+            .then(response => {
+            // 從回應中取得spec並設定到狀態中
+            setName(response.data[0].full_name); 
+            setSpecialization(response.data[0].specialization); // 假設回應是一個包含 username 的陣列
+            console.log("response.data[0].specialization:"+response.data[0].specialization)
+            setExpyear(response.data[0].experience_year);
+            setRating(response.data[0].rating);
+            setPnumber(response.data[0].patients_number);
+            setBio(response.data[0].biography);
+            })
+            .catch(error => {
+            console.error(error);
+            });
+        }, []);
+
     return(
         <div>
             <div className="topofappointment">
@@ -19,7 +67,7 @@ const Appointment = (handleCurrentPageChange) => {
                     ></img>
                 </div>
                 <div className="backarrowofappointment2">
-                    <Link to='/homepage' >
+                    <Link to={backLinkTarget} >
                         <img
                             src={backArrow}
                         ></img>
@@ -48,7 +96,7 @@ const Appointment = (handleCurrentPageChange) => {
                             fontSize:'19px',
                             fontWeight:'bold',
                             marginBottom:'0'
-                        }}>Amy物理治療師</p>
+                        }}>{name}{specialization}</p>
                         <p style={{
                             fontSize:'12px',
                             color:'4A545E',
@@ -65,12 +113,12 @@ const Appointment = (handleCurrentPageChange) => {
                         <p style={{
                             fontSize:'14px',
                             marginBottom:'0'
-                        }}>歷年病患</p>
+                        }}>平台個案</p>
                         <p style={{
                             fontSize:'18px',
                             fontWeight:'bolder',
                             marginTop:'10%'
-                        }}>100+</p>
+                        }}>{pnumber}</p>
                     </div>
                 </div>
                 <div className="expyr">
@@ -86,7 +134,7 @@ const Appointment = (handleCurrentPageChange) => {
                             fontSize:'18px',
                             fontWeight:'bolder',
                             marginTop:'10%'
-                        }}>10年</p>
+                        }}>{expyear}年</p>
                     </div>
                 </div>
                 <div className="rate">
@@ -102,40 +150,15 @@ const Appointment = (handleCurrentPageChange) => {
                             fontSize:'18px',
                             fontWeight:'bolder',
                             marginTop:'10%'
-                        }}>4.67</p>
+                        }}>{rating}</p>
                     </div>
                 </div>
             </div>
             <div className="about">
                 <h3>about</h3>
-                <p>我是Amy，
-                    一位熱愛幫助人恢復健康的物理治療師，
-                    致力於提供個性化的康復方案!</p>
+                <p>{bio}</p>
             </div>
-            <div className="timeselection">
-                
-                <div className="timebg">
-                    <img
-                        src={timebg}
-                    ></img>
-                </div>
-                <div className="timecontent">
-                    <p style={{
-                        fontSize:'14px',
-                        marginBottom:'5%',
-                        color:'black'
-                    }}>今日可預約時間</p>
-                    <p style={{
-                        fontSize:'17px',
-                        fontWeight:'bold',
-                        marginTop:'0',
-                        color:'black'
-                    }}>6 PM - 9 PM</p>
-                </div>
-                
-                
-                
-            </div>
+            
             <div className="chatroombtn">
                 <Link to='/chatroom'>
                     <img
