@@ -1,0 +1,90 @@
+.headerofpersonalsetting{
+    position:absolute;
+    top:7.307%;
+    width: 86.1%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.backarrowofsetting{
+    position: absolute;
+    top:7.307%;
+    left:0%;
+}
+.titleofsetting{
+    position: absolute;
+    top:0%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.titleofsetting h2{
+    margin-top: 10%;
+}
+.basicInfofsetting{
+    position: absolute;
+    top:17%;
+    width:90%;
+    height:28%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.bgofbasicInfo{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:12%;
+}
+.aidataofsetting{
+    position: absolute;
+    top:48.8%;
+    width:90%;
+    height:17.6%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.bgofaidata{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:20%;
+    
+}
+.historyofsetting{
+    position: absolute;
+    top:70.3%;
+    width:90%;
+    height:7%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.bgofhistory{
+    position: absolute;
+    top:50%;
+}
+.paymentofsetting{
+    position: absolute;
+    top:81.2%;
+    width:90%;
+    height:20%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.bgofpayment{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:20%;
+}
+.smalltopic{
+    position: absolute;
+    margin-top: 0;
+}
+.infostyle{
+    /* position: absolute; */
+    background-size: cover;
+    width: 320px;
+    height: 40px;
+    border: 1px solid #D7DEEA;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}

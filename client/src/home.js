@@ -59,34 +59,59 @@ const HomePage = (handleCurrentPageChange) => {
       }, []);
 
     const user_id = sessionStorage.getItem('user_id')
-    const formattedDate = "2023-08-28";
+    
 
     
     console.log("user_id:"+user_id)
-    console.log("formattedDate:"+formattedDate)
+    
     // const [appointmentData, setAppointmentData] = useState([]);
     const [medname, setMedName] = useState('MedName');
     const [startTime, setStartTime] = useState('');
     const [serviceName, setServiceName] = useState('');
     const [specialization, setSpecialization] = useState('');
     const [professionalid, setProfessionalid] = useState('');
-    const present_time = "09:00:00";
+    // 建立現在時間來獲得最近的預約的資訊
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 月份从 0 开始，所以要加 1
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+    function formatTime(date) {
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        const seconds = date.getSeconds().toString().padStart(2, '0');
+        return `${hours}:${minutes}:${seconds}`;
+      }
+      
+    const currentDate = new Date();
+    const formattedDate = formatDate(currentDate);
+    const present_time = formatTime(currentDate); // 获取并格式化当前时间
+    console.log("formattedDate:"+formattedDate); 
+    console.log("present_time:"+present_time); // 输出 "HH:MM:SS" 格式的当前时间
+      
     useEffect(() => {
-        // 從後端取得預約資料
+        // 從後端取得最近的預約資料
         axios.get(`http://localhost:8080/get-nearest-appointment/${user_id}/${formattedDate}/${present_time}`)
         .then(response => {
             // setAppointmentData(response.data);
             // console.log("response.data:"+response.data)
-            setMedName(response.data.full_name); // 假設回應是一個包含 username 的陣列
-            setStartTime(response.data.appointment_start_time)
-            setServiceName(response.data.service_name)
-            setSpecialization(response.data.specialization)
-            setProfessionalid(response.data.professional_id)
-            if(!response.data){
-                console.log("今天沒有安排!")
+            
+            if(!response.data.full_name){
+                console.log("今天沒有預約了!")
+                setMedName('今天沒有預約了!'); 
+                setStartTime('')
+                setServiceName('')
+                setSpecialization('')
+                setProfessionalid('')
             }
             else{
                 console.log("response.data.full_name:"+response.data.full_name)
+                setMedName(response.data.full_name); // 假設回應是一個包含 username 的陣列
+                setStartTime(response.data.appointment_start_time)
+                setServiceName(response.data.service_name)
+                setSpecialization(response.data.specialization)
+                setProfessionalid(response.data.professional_id)
             }
             
         })
@@ -103,11 +128,9 @@ const HomePage = (handleCurrentPageChange) => {
                 <p className='left-align hello'>👋Hello!</p>
                 <p className='nameClient'>{name} {gender}</p>
                 <div className='photofhome'>
-                    <Link to='/profile' >
-                        <img
-                            src={personalPhoto}
-                        ></img>
-                    </Link>
+                    {/* <img
+                        src={personalPhoto}
+                    ></img> */}
                 </div>
             </div>
             <div className='search'>
@@ -201,7 +224,7 @@ const HomePage = (handleCurrentPageChange) => {
                         whiteSpace: 'nowrap',
                         marginTop: '0',
                         marginBottom: '0'
-                    }}>即將到來的最近預約
+                    }}>今天的最近預約
                 </h2>
                 
                     
@@ -265,9 +288,12 @@ const HomePage = (handleCurrentPageChange) => {
                     position: 'absolute',
                     right: '0%'
                 }}>
-                    <img
-                        src={notification}
-                    ></img>
+                    <Link to='/profile' >
+                        <img
+                            src={notification}
+                        ></img>
+                    </Link>
+                    
                 </div>
             </div>
         </div>

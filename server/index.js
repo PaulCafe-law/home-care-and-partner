@@ -640,6 +640,43 @@ app.get('/get-schedule-appointments-med/:professional_id/:formattedDate', async 
 });
 
 
+// personalsetting頁面部分開始
+app.get('/get-user-info/:userId', async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    // 在数据库中查询用户信息
+    const userInfo = await new Promise((resolve, reject) => {
+      con.query('SELECT phone, address, date_of_birth FROM users WHERE user_id = ?', [userId], (error, results) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        // 由于只查询一位用户，所以结果数组应该只包含一个元素
+        const user = results[0];
+        // 将日期格式从 '1985-09-22T16:00:00.000Z' 转换为 '1985-09-22'
+        user.date_of_birth = user.date_of_birth.toISOString().split('T')[0];
+        resolve(user);
+      });
+    });
+
+    // 返回获取到的用户信息
+    res.json(userInfo);
+  } catch (error) {
+    console.error('数据库查询错误', error);
+    res.status(500).json({ error: '数据库查询错误' });
+  }
+});
+
+
+
+
+
+
+
+
+
+
 
 
 

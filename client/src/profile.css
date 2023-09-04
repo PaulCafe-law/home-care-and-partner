@@ -31,10 +31,11 @@
     color: white;
     font-size:  13px;
 }
-.itemsofprofile{
+.itemsofProfile{
     position: absolute;
     top:42%;
-    height:20.5%;
+    height:36%;
+    width: 100%;
     left: 50%;
     transform: translate(-50%,0%);
 }
@@ -46,9 +47,16 @@
 }
 .toMed{
     position: absolute;
+    top:36%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.joinMed{
+    position: absolute;
     bottom:0%;
     left: 50%;
     transform: translate(-50%,0%);
+    bottom: 0;
 }
 .logoutbtn{
     position: absolute;

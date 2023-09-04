@@ -6,6 +6,7 @@ import backArrow from './images-profile/backarrow.svg';
 import client from './images-profile/client.svg';
 import setting from './images-profile/setting.svg';
 import toMed from './images-profile/tomed.svg';
+import joinMed from './images-profile/joinmed.svg';
 import logoutbtn from './images-profile/logoutbtn.svg';
 
 // 跟後端有關
@@ -77,11 +78,13 @@ const Profile = (handleCurrentPageChange) => {
                     <p>台南市 東區</p>
                 </div>
             </div>
-            <div className="itemsofprofile">
+            <div className="itemsofProfile">
                 <div className="setting">
-                    <img
-                        src={setting}
-                    ></img>
+                    <Link to='/personalsetting'>
+                        <img
+                            src={setting}
+                        ></img>
+                    </Link>
                 </div>
                 <div className="toMed">
                     <Link to='#' onClick={handleMedLinkClick}>
@@ -89,6 +92,13 @@ const Profile = (handleCurrentPageChange) => {
                             src={toMed}
                         ></img>
                     </Link>  
+                </div>
+                <div className="joinMed">
+                    
+                    <img
+                        src={joinMed}
+                    ></img>
+                    
                 </div>
                 
             </div>
