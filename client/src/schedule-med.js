@@ -103,14 +103,14 @@ const ScheduleMed = (handleCurrentPageChange) => {
                                             src={clientpic1}
                                         ></img>
                                     </div>
-                                    <div className="info">
+                                    <div className="infofschedulemed">
                                         <p style={{
                                             fontSize: '14px'
                                         }}>{appointment.appointment_start_time}</p>
                                         <p style={{
                                             fontSize: '19px',
                                             fontWeight: '2000',
-                                            marginTop: '7%',
+                                            marginTop: '0%',
                                             marginBottom: '0%'
                                         }}>{appointment.username}{appointment.gender}</p>
                                         <p style={{

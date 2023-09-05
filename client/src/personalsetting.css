@@ -26,6 +26,7 @@
     height:28%;
     left: 50%;
     transform: translate(-50%,0%);
+    max-width: 360px;
 }
 .bgofbasicInfo{
     display: flex;
@@ -40,6 +41,7 @@
     height:17.6%;
     left: 50%;
     transform: translate(-50%,0%);
+    max-width: 360px;
 }
 .bgofaidata{
     display: flex;
@@ -55,6 +57,7 @@
     height:7%;
     left: 50%;
     transform: translate(-50%,0%);
+    max-width: 360px;
 }
 .bgofhistory{
     position: absolute;
@@ -67,6 +70,7 @@
     height:20%;
     left: 50%;
     transform: translate(-50%,0%);
+    max-width: 360px;
 }
 .bgofpayment{
     display: flex;

@@ -48,9 +48,12 @@
 .searchresult{
     position: absolute;
     top: 36%;
-    left:3.889%;
+    /* left:3.889%; */
     width:92.2222%;
     height:72%;
+    max-width: 332px;
+    left:50%;
+    transform: translate(-50%, 0%);
 }
 .topic{
     position: absolute;
@@ -103,6 +106,7 @@
     border-radius: 18% 10% 10% 18%;
     padding: 0px;
     margin-bottom: 10%;
+    max-height: 116px;
 }
 
 /* 讓message可以一直往下 */

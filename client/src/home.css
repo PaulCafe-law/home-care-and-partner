@@ -1,9 +1,12 @@
 .header{
     position: absolute; 
     top: 7.4vh;
-    left: 7.77vw;
+    /* left: 7.77vw; */
     width: 89.167vw;
-    height:7.82%
+    height:7.82%;
+    max-width: 324px;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 .left-align{
     text-align: left;
@@ -61,12 +64,16 @@
     left:87.46%;
     transform: translate(0%, -50%);
 }
-.serviceItem{
+.serviceItemofhomepage{
     position: absolute;
     top:25.77%;
-    left:5.647%;
-    width: 65.67%;
+    /* left:5.647%; */
+    /* width: 65.67%; */
+    width: 89.167%;
     height:13.642%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    max-width: 320px;
 }
 .items{
     position: absolute;
@@ -104,7 +111,7 @@
     height:20.22%;
     left:50%;
     transform: translate(-50%,0%);
-    
+    max-width: 360px;
     
 }
 .appointmentoftodayAppointment h2{

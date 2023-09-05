@@ -220,9 +220,12 @@ const HomePageMed = (handleCurrentPageChange) => {
                     position: 'absolute',
                     right: '0%'
                 }}>
-                    <img
-                        src={notification}
-                    ></img>
+                    <Link to='/profilemed'>
+                        <img
+                            src={notification}
+                        ></img>
+                    </Link>
+                    
                 </div>
             </div>
         </div>

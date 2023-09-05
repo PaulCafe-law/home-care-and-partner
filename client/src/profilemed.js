@@ -8,9 +8,12 @@ import setting from './images-profile/setting.svg';
 import toclient from './images-profile-med/toclient.svg';
 const Profile = (handleCurrentPageChange) => {
     const canvasStyle = {
+        position: 'absolute',
         width: '360px',
         height: '780px',
-        backgroundColor: '#1C6BA4'
+        backgroundColor: '#1C6BA4',
+        left: '50%',
+        transform: 'translate(-50%,0)'
       };
     // const { name, specialization } = useParams();
     const name = sessionStorage.getItem('name');

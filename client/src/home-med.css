@@ -63,9 +63,13 @@
 .serviceItem{
     position: absolute;
     top:25.77%;
-    left:5.647%;
-    width: 65.67%;
+    /* left:5.647%; */
+    /* width: 65.67%; */
+    width: 89.167%;
     height:13.642%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    max-width: 320px;
 }
 .items{
     position: absolute;
@@ -98,9 +102,12 @@
 .appointment{
     position: absolute;
     top:68.82%;
-    left:5.647%;
+    /* left:5.647%; */
     width: 94.353%;
     height:20.22%;
+    max-width: 340px;
+    left:50%;
+    transform: translate(-50%, 0%);
 }
 .navbar{
     position: absolute;

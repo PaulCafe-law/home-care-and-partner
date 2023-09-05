@@ -25,7 +25,27 @@ const PersonalSetting = (handleCurrentPageChange) => {
     const [birthday, setBirthday] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
-
+    // 編輯名字
+    const [buttonTextofname, setButtonTextofname] = useState(name);
+    const handleEditClick = () => {
+        const newValue = prompt('請輸入新的真實姓名：');
+        if (newValue !== null) {
+            setButtonTextofname(newValue);
+            sessionStorage.setItem('name', newValue);
+            // 发送 POST 请求来更新数据库中的用户名
+            axios.post(`http://localhost:8080/update-username/${user_id}`, {
+                newUsername: newValue,
+            })
+                .then((response) => {
+                    // 处理成功响应
+                    console.log('用户名已更新');
+                })
+                .catch((error) => {
+                    console.error('更新用户名失败', error);
+                });
+        }
+    };
+    
     // 发送 GET 请求
     axios.get(`http://localhost:8080/get-user-info/${user_id}`)
     .then((response) => {
@@ -35,11 +55,92 @@ const PersonalSetting = (handleCurrentPageChange) => {
         setBirthday(userInfo.date_of_birth)
         setPhone(userInfo.phone)
         setAddress(userInfo.address)
+        // 在这里设置 buttonTextof 的各項初始值
+        setButtonTextofbirth(userInfo.date_of_birth);
+        setButtonTextofphone(userInfo.phone)
+        setButtonTextofemail(userInfo.email)
+        setButtonTextofaddress(userInfo.address)
     })
     .catch((error) => {
         console.error('获取用户信息失败', error);
     });
+    // 編輯出生年月日
+    const [buttonTextofbirth, setButtonTextofbirth] = useState('');
+    const handleEditClickbirth = () => {
+        const newValue = prompt('請輸入新的生日：');
+        if (newValue !== null) {
+            setButtonTextofbirth(newValue);
+            // 发送 POST 请求来更新数据库中的生日
+            axios.post(`http://localhost:8080/update-user-birthday/${user_id}`, {
+                newBirthday: newValue,
+            })
+                .then((response) => {
+                    // 处理成功响应
+                    console.log('用户名已更新');
+                })
+                .catch((error) => {
+                    console.error('更新用户名失败', error);
+                });
+        }
+    };
+    // 編輯手機號碼
+    const [buttonTextofphone, setButtonTextofphone] = useState('');
+    const handleEditClickphone = () => {
+        const newValue = prompt('請輸入新的電話：');
+        if (newValue !== null) {
+            setButtonTextofphone(newValue);
+            // 发送 POST 请求来更新数据库中的生日
+            axios.post(`http://localhost:8080/update-user-phone/${user_id}`, {
+                newPhonenumber: newValue,
+            })
+                .then((response) => {
+                    // 处理成功响应
+                    console.log('用户手機號碼已更新');
+                })
+                .catch((error) => {
+                    console.error('更新用户手機失败', error);
+                });
+        }
+    };
+    // 編輯email
+    const [buttonTextofemail, setButtonTextofemail] = useState('');
+    const handleEditClickemail = () => {
+        const newValue = prompt('請輸入新的email：');
+        if (newValue !== null) {
+            setButtonTextofemail(newValue);
+            // 发送 POST 请求来更新数据库中的生日
+            axios.post(`http://localhost:8080/update-user-email/${user_id}`, {
+                newEmail: newValue,
+            })
+                .then((response) => {
+                    // 处理成功响应
+                    console.log('用户email已更新');
+                })
+                .catch((error) => {
+                    console.error('更新用户email失败', error);
+                });
+        }
+    };
 
+    // 編輯address
+    const [buttonTextofaddress, setButtonTextofaddress] = useState('');
+    const handleEditClickaddress = () => {
+        const newValue = prompt('請輸入新的住址：');
+        if (newValue !== null) {
+            setButtonTextofaddress(newValue);
+            // 发送 POST 请求来更新数据库中的住址
+            axios.post(`http://localhost:8080/update-user-address/${user_id}`, {
+                newAddress: newValue,
+            })
+                .then((response) => {
+                    // 处理成功响应
+                    console.log('用户address已更新');
+                })
+                .catch((error) => {
+                    console.error('更新用户address失败', error);
+                });
+        }
+    };
       
       
     
@@ -67,18 +168,22 @@ const PersonalSetting = (handleCurrentPageChange) => {
                             display: 'flex', 
                             justifyContent: 'space-around', 
                             alignItems: 'center' 
-                    }}>
+                        }}
+                        onClick={handleEditClick}
+                    >
                         <span>真實姓名</span>
-                        <span>{name}</span>
+                        <span>{buttonTextofname}</span>
                     </button>
                     <button className="infostyle"
                         style={{ 
                             display: 'flex', 
                             justifyContent: 'space-around', 
                             alignItems: 'center' 
-                    }}>
+                        }}
+                        onClick={handleEditClickbirth}
+                    >
                         <span>出生年月日</span>
-                        <span>{birthday}</span>
+                        <span>{buttonTextofbirth}</span>
                         
                     </button>
                     <button className="infostyle"
@@ -86,28 +191,34 @@ const PersonalSetting = (handleCurrentPageChange) => {
                             display: 'flex', 
                             justifyContent: 'space-around', 
                             alignItems: 'center' 
-                    }}>
+                        }}
+                        onClick={handleEditClickphone}
+                    >
                         <span>電話</span>
-                        <span>{phone}</span>
+                        <span>{buttonTextofphone}</span>
                     </button>
                     <button className="infostyle"
                         style={{ 
                             display: 'flex', 
                             justifyContent: 'space-around', 
                             alignItems: 'center' 
-                    }}>
+                        }}
+                        onClick={handleEditClickemail}
+                    >
                         
                         <span>Email</span>
-                        <span>{email}</span>
+                        <span>{buttonTextofemail}</span>
                     </button>
                     <button className="infostyle"
                         style={{ 
                             display: 'flex', 
                             justifyContent: 'space-around', 
                             alignItems: 'center' 
-                    }}>
+                        }}
+                        onClick={handleEditClickaddress}
+                    >
                         <span>地址</span>
-                        <span>{address}</span>
+                        <span>{buttonTextofaddress}</span>
                     </button>
                 </div>
             </div>

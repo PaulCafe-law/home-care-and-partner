@@ -647,7 +647,7 @@ app.get('/get-user-info/:userId', async (req, res) => {
   try {
     // 在数据库中查询用户信息
     const userInfo = await new Promise((resolve, reject) => {
-      con.query('SELECT phone, address, date_of_birth FROM users WHERE user_id = ?', [userId], (error, results) => {
+      con.query('SELECT phone, address, date_of_birth, email FROM users WHERE user_id = ?', [userId], (error, results) => {
         if (error) {
           reject(error);
           return;
@@ -667,6 +667,107 @@ app.get('/get-user-info/:userId', async (req, res) => {
     res.status(500).json({ error: '数据库查询错误' });
   }
 });
+
+app.post('/update-username/:user_id', (req, res) => {
+  const user_id = req.params.user_id;
+  const newUsername = req.body.newUsername;
+  console.log("user_id"+user_id)
+  // 这里需要编写代码来将 newUsername 更新到数据库中，具体操作取决于你使用的数据库系统和 ORM。
+
+  // 假设你使用的是 MySQL 和 mysql2 模块，可以这样进行更新操作：
+  const sql = 'UPDATE users SET username = ? WHERE user_id = ?';
+
+  con.query(sql, [newUsername, user_id], (error, results) => {
+    if (error) {
+      console.error('更新用户名失败', error);
+      res.status(500).json({ error: '更新用户名失败' });
+    } else {
+      console.log('用户名已更新');
+      res.status(200).json({ message: '用户名已更新' });
+    }
+  });
+});
+
+app.post('/update-user-birthday/:user_id', (req, res) => {
+  const user_id = req.params.user_id;
+  const newBirthday = req.body.newBirthday;
+  console.log("user_id"+user_id)
+  // 这里需要编写代码来将 newUsername 更新到数据库中，具体操作取决于你使用的数据库系统和 ORM。
+
+  // 假设你使用的是 MySQL 和 mysql2 模块，可以这样进行更新操作：
+  const sql = 'UPDATE users SET date_of_birth = ? WHERE user_id = ?';
+
+  con.query(sql, [newBirthday, user_id], (error, results) => {
+    if (error) {
+      console.error('更新用户生日失败', error);
+      res.status(500).json({ error: '更新用户生日失败' });
+    } else {
+      console.log('用户名已更新');
+      res.status(200).json({ message: '用户生日已更新' });
+    }
+  });
+});
+
+app.post('/update-user-phone/:user_id', (req, res) => {
+  const user_id = req.params.user_id;
+  const newPhonenumber = req.body.newPhonenumber;
+  console.log("user_id:"+user_id)
+  // 这里需要编写代码来将 newUsername 更新到数据库中，具体操作取决于你使用的数据库系统和 ORM。
+
+  // 假设你使用的是 MySQL 和 mysql2 模块，可以这样进行更新操作：
+  const sql = 'UPDATE users SET phone = ? WHERE user_id = ?';
+
+  con.query(sql, [newPhonenumber, user_id], (error, results) => {
+    if (error) {
+      console.error('更新用户手機失败', error);
+      res.status(500).json({ error: '更新用户手機失败' });
+    } else {
+      console.log('用户手機已更新');
+      res.status(200).json({ message: '用户手機已更新' });
+    }
+  });
+});
+
+app.post('/update-user-email/:user_id', (req, res) => {
+  const user_id = req.params.user_id;
+  const newEmail = req.body.newEmail;
+  console.log("user_id:"+user_id)
+  // 这里需要编写代码来将 newUsername 更新到数据库中，具体操作取决于你使用的数据库系统和 ORM。
+
+  // 假设你使用的是 MySQL 和 mysql2 模块，可以这样进行更新操作：
+  const sql = 'UPDATE users SET email = ? WHERE user_id = ?';
+
+  con.query(sql, [newEmail, user_id], (error, results) => {
+    if (error) {
+      console.error('更新用户email失败', error);
+      res.status(500).json({ error: '更新用户email失败' });
+    } else {
+      console.log('用户email已更新');
+      res.status(200).json({ message: '用户email已更新' });
+    }
+  });
+});
+
+app.post('/update-user-address/:user_id', (req, res) => {
+  const user_id = req.params.user_id;
+  const newAddress = req.body.newAddress;
+  console.log("user_id:"+user_id)
+  // 这里需要编写代码来将 newUsername 更新到数据库中，具体操作取决于你使用的数据库系统和 ORM。
+
+  // 假设你使用的是 MySQL 和 mysql2 模块，可以这样进行更新操作：
+  const sql = 'UPDATE users SET address = ? WHERE user_id = ?';
+
+  con.query(sql, [newAddress, user_id], (error, results) => {
+    if (error) {
+      console.error('更新用户address失败', error);
+      res.status(500).json({ error: '更新用户address失败' });
+    } else {
+      console.log('用户address已更新');
+      res.status(200).json({ message: '用户address已更新' });
+    }
+  });
+});
+
 
 
 

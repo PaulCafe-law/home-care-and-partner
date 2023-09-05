@@ -14,9 +14,12 @@ import axios from 'axios';
 
 const Profile = (handleCurrentPageChange) => {
     const canvasStyle = {
+        position: 'absolute',
         width: '360px',
         height: '780px',
-        backgroundColor: '#1C6BA4'
+        backgroundColor: '#1C6BA4',
+        left: '50%',
+        transform: 'translate(-50%,0)'
       };
     // 用參數來傳遞姓名和性別
     // const { name, gender } = useParams();

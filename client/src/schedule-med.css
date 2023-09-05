@@ -36,6 +36,7 @@
     top:30%;
     left:50%;
     transform: translate(-50%,0%);
+    max-width: 319px;
 }
 .schedulesmed{
     /* result-wrap */
@@ -96,18 +97,22 @@
     width:18.81%;
     height:56.2%;
 }
-.info{
+.infofschedulemed{
     position: absolute;
     z-index: 2;
-    height: 58.2%;
-    top:20%;
-    left:35%;
+    height: 58%;
+    max-height: 59px;
+    top:25%;
+    /* top:50%;
+    transform: translate(0%,-50%); */
+    left:30%;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content:space-between;
+    text-align: left;
 }
-.info p{
+.infofschedulemed p{
     margin-top:0;
     margin-bottom: 0;
 }

@@ -152,7 +152,7 @@ const HomePage = (handleCurrentPageChange) => {
                     ></img>
                 </div>
             </div>
-            <div className='serviceItem'>
+            <div className='serviceItemofhomepage'>
                 <h2 
                 style={{
                     position: 'absolute',
