@@ -121,18 +121,11 @@ const Payment = (handleCurrentPageChange) =>{
                         position:'absolute',
                         top:'0',
                         left:'7.778%',
-                        marginTop:'0'
+                        marginTop:'0',
+                        fontSize:'20px'
                     }}>輸入優惠碼</h2>
                     <input
-                        style={{
-                            position: 'absolute',
-                            bottom: '20%',
-                            left: '7.778%',
-                            width: '51.7%', // 設定輸入框的寬度
-                            height: '20%', // 設定輸入框的高度
-                            borderRadius: '10px', // 設定圓角
-                            padding: '5px', // 設定內間距
-                        }}
+                        className='inputofdiscount'
                         type="text" // 設定輸入框的類型為文字
                         placeholder="請輸入優惠碼" // 設定預設提示文字
                     />

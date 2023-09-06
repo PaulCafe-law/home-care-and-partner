@@ -90,16 +90,67 @@
     width:18.81%;
     height:56.2%;
 }
-.info{
-    position: absolute;
-    z-index: 2;
-    height: 50%;
-    top:10%;
-    left:30%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between;
+@media (min-width: 1025px) {
+    .photofmed{
+        position: absolute;
+        z-index: 2;
+        top: 24.78%;
+        left: 14%;
+        width:18.81%;
+        height:56.2%;
+    }
+    .info{
+        position: absolute;
+        z-index: 2;
+        height: 50%;
+        top:10%;
+        left:35%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+    }
+    .infoftime{
+        font-size: 12px;
+    }
+    .infofmain{
+        font-size: 15px;
+        font-weight: 2000;
+        margin-top: 5%;
+        margin-bottom: 0%;
+    }
+    .infoofservice{
+        font-size: 12px;
+        opacity: 0.65;
+    }
+    
+}
+@media (max-width: 1024px){
+    .info{
+        position: absolute;
+        z-index: 2;
+        height: 50%;
+        top:15%;
+        left:30%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+    }
+    
+    .infoftime{
+        font-size: 14px;
+    }
+    .infoofmain{
+        font-size: 19px;
+        font-weight: 2000;
+        margin-top: 5%;
+        margin-bottom: 0%;
+    }
+    .infoofservice{
+        font-size: 15px;
+        opacity: 0.65;
+    }
 }
 .info p{
     text-align: left;

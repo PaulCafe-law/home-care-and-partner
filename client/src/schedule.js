@@ -103,11 +103,11 @@ const Schedule = (handleCurrentPageChange) => {
                                             <img src={clientpic1}></img>
                                         </div>
                                         <div className="info">
-                                            <p style={{ fontSize: '14px' }}>{appointment.appointment_start_time}</p>
-                                            <p style={{ fontSize: '19px', fontWeight: '2000', marginTop: '5%', marginBottom: '0%' }}>
-                                                {appointment.full_name}{appointment.specialization}{appointment.professional_id}
+                                            <p className='infoftime'>{appointment.appointment_start_time}</p>
+                                            <p className='infofmain'>
+                                                {appointment.full_name}{appointment.specialization}
                                             </p>
-                                            <p style={{ fontSize: '15px', opacity: '0.65' }}>{appointment.service_name}</p>
+                                            <p className='infoofservice'>{appointment.service_name}</p>
                                         </div>
                                     </Link>
                                     

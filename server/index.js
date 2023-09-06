@@ -282,6 +282,25 @@ app.get('/checkUserRole/:name', (req, res) => {
     }
   });
 });
+
+app.get('/get-users-professionalId/:user_id', (req, res) => {
+  console.log('Current session data:', req.session);
+  const targetUserId = req.params.user_id; // 從路徑參數中取得傳遞的名稱
+  // console.log("targetname:"+targetUsername)
+  con.query('SELECT professional_id FROM medicalprofessional WHERE user_id = ?', [targetUserId], function (error, results, fields) {
+    if (error) {
+      throw error;
+    }
+    if (results.length > 0) {
+      // const role = results[0].role;
+      console.log("professionalid req有傳來!");
+      // res.json({ role });
+      res.json(results);
+    } else {
+      res.json({ error: "User not found" });
+    }
+  });
+});
 // profile部分結束
 
 // homepagemed部分開始
@@ -319,6 +338,59 @@ app.get('/user-professional-id/:email', (req, res) => {
       res.json({ error: "User not found" });
     }
   });
+});
+
+app.get('/get-nearest-appointment-med/:professional_id/:formattedDate/:present_time', async (req, res) => {
+  const professional_id = req.params.professional_id;
+  const formattedDate = req.params.formattedDate;
+  const presentTime = req.params.present_time;
+
+  try {
+    const result = await new Promise((resolve, reject) => {
+      con.query('SELECT user_id, service_name, appointment_start_time FROM appointments WHERE professional_id = ? AND appointment_date = ? AND appointment_start_time > ? ORDER BY appointment_start_time ASC LIMIT 1', 
+        [professional_id, formattedDate, presentTime], (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve(results[0]); // 只返回一行
+        });
+    });
+
+    if (!result) {
+      // 如果没有匹配的预约，可以返回空数据或适当的错误消息
+      res.json({ message: '没有符合条件的预约' });
+      return;
+    }
+
+    const { user_id, service_name, appointment_start_time } = result;
+    console.log("xxxxxxxxxxxx")
+    console.log("user_id:"+user_id)
+
+
+    const clientInfo = await new Promise((resolve, reject) => {
+      con.query('SELECT username, gender FROM users WHERE user_id = ?', 
+        [user_id], (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve(results[0]);
+        });
+    });
+
+    const response = {
+      username: clientInfo.username,
+      service_name,
+      appointment_start_time,
+      gender: clientInfo.gender
+    };
+
+    res.json(response);
+  } catch (error) {
+    console.error('数据库查询错误', error);
+    res.status(500).json({ error: '数据库查询错误' });
+  }
 });
 // homepagemed部分結束
 

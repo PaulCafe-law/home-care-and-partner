@@ -64,6 +64,24 @@
     left: 79%;
     
 }
+@media (min-width: 361px){
+    .backarrowofmeddetail{
+        z-index: 2;
+        position: absolute;
+        top:10%;
+        left:30%;
+        transform: translate(-50%,0%);
+    }
+}
+@media (min-width: 768px){
+    .backarrowofmeddetail{
+        z-index: 2;
+        position: absolute;
+        top:10%;
+        left:40%;
+        transform: translate(-50%,0%);
+    }
+}
 .aboutofmeddetail{
     position: absolute;
     top:50%;
@@ -73,10 +91,10 @@
     height:20.64%;
 }
 .aboutofmeddetail h3{
-    text-align: left;
+    text-align: center;
 }
 .aboutofmeddetail p{
-    text-align: left;
+    text-align: center;
     color:4A545E;
     font-size: 18px;
     line-height: 135%;
@@ -86,6 +104,7 @@
     top:62%;
     left:50%;
     transform: translate(-50%,0%);
+    max-width: 320px;
     width:88.61%;
 }
 .dropdownofmeddetail h2{

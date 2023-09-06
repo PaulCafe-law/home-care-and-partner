@@ -29,6 +29,21 @@
     font-size: 36px;
     margin-top: 25px;
 }
+@media (min-width: 1025px) {
+    .nameClient{
+        position: absolute;
+        z-index: 2;
+        top: 11.47%;
+        left: 0%;
+        /* top:10.64vh; */
+        font-weight: bold;
+        font-size: 36px;
+        margin-top: 10px;
+        
+    }
+    
+    
+}
 .photofhome{
     position: absolute;
     z-index: 2;
@@ -40,6 +55,19 @@
     top:18.333%;
     left: 50%;
     transform: translate(-50%, 0%);
+}
+@media (min-width: 1025px) {
+    .search{
+        position: absolute;
+        top:18.333%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        
+    }
+    .searchbg{
+        max-height: 40px;
+    }
+    
 }
 .searchicon{
     position: absolute;
@@ -87,21 +115,117 @@
     top:0%;
     left:0%;
 }
+.introduction p{
+    position: absolute;
+    z-index: 2;
+    top: 71.42%;
+    left: 50%;
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 9px;
+    transform: translate(-50%, 0%);
+    white-space: nowrap;
+}
+@media (min-width: 1025px) {
+    .introduction img{
+        
+        max-height: 60px;
+        /* left:50%;
+        transform: translate(-50%,0%); */
+        left:50%;
+        margin-top: 10px;
+        margin-left:20px;
+    }
+    .introduction p{
+        position: absolute;
+        z-index: 2;
+        top: 71.42%;
+        left: 60%;
+        margin-top: 0;
+        font-weight: bold;
+        font-size: 9px;
+        transform: translate(-50%, 0%);
+        white-space: nowrap;
+    }
+}
 .prescription{
     position: absolute;
     top:0%;
     left:34.9%;
+}
+.prescription p{
+    position: absolute;
+    z-index: 2;
+    top: 71.42%;
+    left: 50%;
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 9px;
+    transform: translate(-50%, 0%);
+}
+@media (min-width: 1025px) {
+    .prescription img{
+        
+        max-height: 60px;
+        /* left:50%;
+        transform: translate(-50%,0%); */
+        left:50%;
+        margin-top: 10px;
+        /* margin-left:20px; */
+    }
+    .prescription p{
+        position: absolute;
+        z-index: 2;
+        top: 71.42%;
+        left: 50%;
+        margin-top: 0;
+        font-weight: bold;
+        font-size: 9px;
+        transform: translate(-50%, 0%);
+        white-space: nowrap;
+    }
+    
 }
 .social{
     position: absolute;
     top:0%;
     left:69.8%;
 }
+@media (min-width: 1025px) {
+    .social img{
+        
+        max-height: 60px;
+        /* left:50%;
+        transform: translate(-50%,0%); */
+        left:50%;
+        margin-top: 10px;
+        /* margin-left:20px; */
+    }
+    .social p{
+        position: absolute;
+        z-index: 2;
+        top: 71.42%;
+        left: 50%;
+        margin-top: 0;
+        font-weight: bold;
+        font-size: 9px;
+        transform: translate(-50%, 0%);
+        white-space: nowrap;
+    }
+    
+}
 .ad{
     position: absolute;
     top:43.257%;
     left:50%;
     transform: translate(-50%, 0%);
+}
+
+@media (min-width: 1025px) {
+    .ad img{
+        
+        max-height: 150px;
+    }
 }
 .appointmentoftodayAppointment{
     position: absolute;
@@ -142,10 +266,28 @@
 }
 .bodytodayAppointment img{
     position: absolute;
-    /* width:100%;
-    height:100%; */
+    
     left:50%;
     transform: translate(-50%,0%);
+}
+
+/* 当屏幕宽度小于等于768像素时，应用以下样式 */
+@media (max-width: 768px) {
+    .bodytodayAppointment img {
+        position: absolute;
+    
+        left:50%;
+        transform: translate(-50%,0%);
+    }
+}
+@media (min-width: 1025px) {
+    .bodytodayAppointment img {
+        position: absolute;
+    
+        left:50%;
+        transform: translate(-50%,0%);
+        max-height: 90px;
+    }
 }
 
 .photoftodayAppointment{

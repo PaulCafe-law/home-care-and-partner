@@ -47,6 +47,62 @@
     transform: translate(-50%,0%);
     justify-content: space-around;
 }
+@media (min-width: 361px){
+    .backarrowofappointment2{
+        z-index: 2;
+        position: absolute;
+        top:10%;
+        left:40%;
+        transform: translate(-50%,0%);
+    }
+    .shortinfo{
+        position: absolute;
+        display:flex;
+        left:50%;
+        top:60%;
+        width: 100%;
+        transform: translate(-50%,0%);
+        justify-content: space-around;
+        height: 17%;
+        max-width: 360px;
+    }
+    
+    /* .clientnumber{
+        position: relative;
+    }
+    .numbercontent{
+        position: absolute;
+        width: 80px;
+        height: 80px;
+    }
+    .clientnumber img{
+        position: absolute;
+        bottom: 0;
+        max-height:80px;
+    }
+    .expyr{
+        position: relative;
+    }
+    .expyr img{
+        position: absolute;
+        bottom: 0;
+        max-height:80px;
+    }
+    .rate{
+        position: relative;
+    }
+    .rate img{
+        position: absolute;
+        bottom: 0;
+        max-height:80px;
+    }
+    .numbercontent{
+        position: absolute;
+        top:8%;
+        left: 25%;
+        z-index: 2;
+    } */
+}
 .numbercontent{
     position: absolute;
     top:8%;
@@ -67,15 +123,17 @@
 .about{
     position: absolute;
     top:52.7%;
-    left:7.778%;
+    /* left:7.778%; */
     width:88.61%;
     height:20.64%;
+    left: 50%;
+    transform: translate(-50%,0%);
 }
 .about h3{
-    text-align: left;
+    text-align: center;
 }
 .about p{
-    text-align: left;
+    text-align: center;
     color:4A545E;
     font-size: 18px;
     line-height: 135%;

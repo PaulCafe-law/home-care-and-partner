@@ -19,9 +19,21 @@
     top: 47.2%;
     left: 7.7778%;
 }
+@media (min-width: 1025px){
+    .backarrowofchatroom{
+        position: absolute;
+        top: 30%;
+        left: 7.7778%;
+    }
+    .photofchatroom{
+        position: absolute;
+        top: 30%;
+        left: 23%;
+    }
+}
 .photofchatroom{
     position: absolute;
-    top: 47.2%;
+    top: 45%;
     left: 23%;
 }
 .nameofchatroom{
@@ -43,6 +55,9 @@
     /* background-color: #f4f4f4; */
     background-color: #F4ECE8;
     text-align:center;
+    max-width: 360px;
+    left:50%;
+    transform: translate(-50%,0);
 }
 .chat-wrap-main{
     padding: 0 25px;
@@ -126,6 +141,8 @@
 .bottomofchatroom{
     position: absolute;
     top:92.3%;
+    left:50%;
+    transform: translate(-50%,0);
 }
 .bottomcontentofchatroom{
     position: absolute;

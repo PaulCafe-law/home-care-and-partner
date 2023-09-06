@@ -97,10 +97,10 @@ const Appointment = (handleCurrentPageChange) => {
                             fontWeight:'bold',
                             marginBottom:'0'
                         }}>{name}{specialization}</p>
-                        <p style={{
+                        {/* <p style={{
                             fontSize:'12px',
                             color:'4A545E',
-                        }}>成大醫院 老人物理治療專科</p>
+                        }}>成大醫院 老人物理治療專科</p> */}
                     </div>
                 </div>
             </div>
@@ -112,7 +112,8 @@ const Appointment = (handleCurrentPageChange) => {
                     <div className="numbercontent">
                         <p style={{
                             fontSize:'14px',
-                            marginBottom:'0'
+                            marginBottom:'0',
+                            whiteSpace:'nowrap'
                         }}>平台個案</p>
                         <p style={{
                             fontSize:'18px',
@@ -128,12 +129,14 @@ const Appointment = (handleCurrentPageChange) => {
                     <div className="yrcontent">
                         <p style={{
                             fontSize:'14px',
-                            marginBottom:'0'
+                            marginBottom:'0',
+                            whiteSpace:'nowrap'
                         }}>年資</p>
                         <p style={{
                             fontSize:'18px',
                             fontWeight:'bolder',
-                            marginTop:'10%'
+                            marginTop:'10%',
+                            whiteSpace:'nowrap'
                         }}>{expyear}年</p>
                     </div>
                 </div>
@@ -144,12 +147,14 @@ const Appointment = (handleCurrentPageChange) => {
                     <div className="ratecontent">
                         <p style={{
                             fontSize:'14px',
-                            marginBottom:'0'
+                            marginBottom:'0',
+                            whiteSpace:'nowrap'
                         }}>評價</p>
                         <p style={{
                             fontSize:'18px',
                             fontWeight:'bolder',
-                            marginTop:'10%'
+                            marginTop:'10%',
+                            whiteSpace:'nowrap'
                         }}>{rating}</p>
                     </div>
                 </div>

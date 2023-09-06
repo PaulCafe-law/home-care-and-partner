@@ -119,7 +119,7 @@ const HomePage = (handleCurrentPageChange) => {
             console.error('發生錯誤', error);
         });
     }, []);
-    sessionStorage.setItem("med_id",professionalid)
+    sessionStorage.setItem("med_id",professionalid) //更新sessionStorage
     
 
     return(
@@ -146,11 +146,11 @@ const HomePage = (handleCurrentPageChange) => {
                     <p className='searchtextofhome'>搜尋醫療人員..</p>
                 </Link>
                 
-                <div className='searchfilter'>
+                {/* <div className='searchfilter'>
                     <img
                         src={filter}
                     ></img>
-                </div>
+                </div> */}
             </div>
             <div className='serviceItemofhomepage'>
                 <h2 
@@ -165,7 +165,7 @@ const HomePage = (handleCurrentPageChange) => {
                         <img
                             src={introduction}
                         ></img>
-                        <p
+                        {/* <p
                         style={{
                             position: 'absolute',
                             zIndex: '2',
@@ -176,23 +176,14 @@ const HomePage = (handleCurrentPageChange) => {
                             fontSize: '9px',
                             transform: 'translate(-50%, 0%)',
                             whiteSpace: 'nowrap'
-                        }}>自我介紹</p>
+                        }}>自我介紹</p> */}
+                        <p>自我介紹</p>
                     </div>
                     <div className='prescription'>
                         <img
                             src={prescription}
                         ></img>
-                        <p
-                        style={{
-                            position: 'absolute',
-                            zIndex: '2',
-                            top: '71.42%',
-                            left: '50%',
-                            marginTop: '0',
-                            fontWeight: 'bold',
-                            fontSize: '9px',
-                            transform: 'translate(-50%, 0%)'
-                        }}>處方籤</p>
+                        <p >處方籤</p>
                     </div>
                     <div className='social'>
                         <img

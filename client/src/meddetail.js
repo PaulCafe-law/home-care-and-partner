@@ -108,10 +108,10 @@ const Meddetail = (handleCurrentPageChange) => {
                             fontWeight:'bold',
                             marginBottom:'0'
                         }}>{name}{specialization}</p>
-                        <p style={{
+                        {/* <p style={{
                             fontSize:'12px',
                             color:'4A545E',
-                        }}>成大醫院 老人物理治療專科</p>
+                        }}>成大醫院 老人物理治療專科</p> */}
                     </div>
                 </div>
             </div>

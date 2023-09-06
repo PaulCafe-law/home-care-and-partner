@@ -103,15 +103,7 @@ const Search = (handleCurrentPageChange) =>{
                                         />
                                     </div>
                                     <div className='medinfo' >
-                                        <p style={{
-                                            position: 'absolute',
-                                            left: '0',
-                                            fontSize: '22px',
-                                            top: '0%',
-                                            fontWeight: 'bold',
-                                            color: 'black',
-                                            textAlign: 'left'
-                                        }}>{professional.full_name}<br></br>{professional.specialization} </p>
+                                        <p className='medinfofname'>{professional.full_name}<br></br>{professional.specialization} </p>
                                         <br></br>
                                         <p style={{
                                             position: 'absolute',
@@ -125,7 +117,7 @@ const Search = (handleCurrentPageChange) =>{
                                                 alt="Star Rating"
                                             />
                                             <p>&nbsp;{professional.rating}</p>
-                                            <p>&nbsp;(17 reviews)</p>
+                                            
                                         </div>
                                     </div>
                                 </Link>

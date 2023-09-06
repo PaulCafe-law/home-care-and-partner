@@ -36,7 +36,7 @@ const Profile = (handleCurrentPageChange) => {
         console.log("一個sessionstorage項目已顯示")
       }
       
-      
+    const user_id = sessionStorage.getItem('user_id');
     const navigate = useNavigate();
     const handleMedLinkClick = async () => {
         try {
@@ -44,6 +44,9 @@ const Profile = (handleCurrentPageChange) => {
           const userRole = responseOfRole.data[0].role; // 假設後端回傳的資料中有 role 屬性
       
           if (userRole === 'med') {
+            const responseOfProId = await axios.get(`http://localhost:8080/get-users-professionalId/${user_id}`); // 替換成實際的後端路由
+            const professional_id = responseOfProId.data[0].professional_id; // 假設後端回傳的資料中有 role 屬性
+            sessionStorage.setItem('professional_id',professional_id)
             navigate(`/homepagemed`); // 如果使用者的 role 是 med，則導航到 homepagemed
           } else {
             // 在這裡可以執行其他操作，例如顯示錯誤訊息
