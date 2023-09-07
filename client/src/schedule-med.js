@@ -87,7 +87,7 @@ const ScheduleMed = (handleCurrentPageChange) => {
                                 }}
                                 src={line}
                             ></img>
-                            <div className="body1">
+                            <div className="body1ofschedulemed">
                                 <Link 
                                     to={'/chatroommed'}
                                     state={{
@@ -104,19 +104,9 @@ const ScheduleMed = (handleCurrentPageChange) => {
                                         ></img>
                                     </div>
                                     <div className="infofschedulemed">
-                                        <p style={{
-                                            fontSize: '14px'
-                                        }}>{appointment.appointment_start_time}</p>
-                                        <p style={{
-                                            fontSize: '19px',
-                                            fontWeight: '2000',
-                                            marginTop: '0%',
-                                            marginBottom: '0%'
-                                        }}>{appointment.username}{appointment.gender}</p>
-                                        <p style={{
-                                            fontSize: '15px',
-                                            opacity: '0.65'
-                                        }}>{appointment.service_name}</p>
+                                        <p className='infoftime'>{appointment.appointment_start_time}</p>
+                                        <p className='infofmain'>{appointment.username}{appointment.gender}</p>
+                                        <p className='infoofservice'>{appointment.service_name}</p>
                                     </div>
                                 </Link>
                                 

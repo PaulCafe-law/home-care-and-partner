@@ -75,14 +75,22 @@
     /* *zoom:1; */
     zoom:1;
 }
-.body1{
+.body1ofschedulemed{
     position: absolute;
     width:100%;
     height:73.6%;
     top:15%;
     left:0%;
 }
-.body1 img{
+@media (min-width: 1025px){
+    .body1ofschedulemed img{
+        position: absolute;
+        transform: scaleX(1.1); /* 横向放大 1.5 倍 */
+        height: 100%;
+        left: 0%;
+    }
+}
+.body1ofschedulemed img{
     position: absolute;
     width:100%;
     height:100%;

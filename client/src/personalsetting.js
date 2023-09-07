@@ -12,7 +12,8 @@ const PersonalSetting = (handleCurrentPageChange) => {
     const canvasStyle = {
         width: '360px',
         height: '780px',
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#FFFFFF',
+        
       };
     // 用參數來傳遞姓名和性別
     // const { name, gender } = useParams();
@@ -146,7 +147,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
     
 
     return(
-        <div style={canvasStyle}>
+        <div >
             <div className="headerofpersonalsetting">
                 <div className="backarrowofsetting">
                     <Link to='/profile'>
@@ -159,6 +160,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
                     <h2>個人資料設定</h2>
                 </div>
             </div>
+            
             <div className='basicInfofsetting'>
                 <h3 className="smalltopic">基本資料</h3>
                 <div className="bgofbasicInfo">
@@ -176,6 +178,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
                     </button>
                     <button className="infostyle"
                         style={{ 
+                            
                             display: 'flex', 
                             justifyContent: 'space-around', 
                             alignItems: 'center' 
@@ -188,6 +191,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
                     </button>
                     <button className="infostyle"
                         style={{ 
+                            
                             display: 'flex', 
                             justifyContent: 'space-around', 
                             alignItems: 'center' 
@@ -199,6 +203,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
                     </button>
                     <button className="infostyle"
                         style={{ 
+                            
                             display: 'flex', 
                             justifyContent: 'space-around', 
                             alignItems: 'center' 
@@ -211,6 +216,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
                     </button>
                     <button className="infostyle"
                         style={{ 
+                            
                             display: 'flex', 
                             justifyContent: 'space-around', 
                             alignItems: 'center' 
@@ -254,7 +260,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
             </div>
             <div className='paymentofsetting'>
                 <h3 className="smalltopic">支付相關</h3>
-                <div className="bgofpayment">
+                <div className="bgofpaymentofsetting">
                     <button className="infostyle">
                         {/* 在按钮内部添加内容 */}
                         設定支付方式
@@ -265,6 +271,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
                     </button>
                 </div>
             </div>
+            
             
             
             

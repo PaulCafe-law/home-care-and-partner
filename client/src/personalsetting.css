@@ -2,8 +2,10 @@
     position:absolute;
     top:7.307%;
     width: 86.1%;
+    height:6.8%;
     left: 50%;
     transform: translate(-50%,0%);
+    max-width: 360px;
 }
 .backarrowofsetting{
     position: absolute;
@@ -19,29 +21,53 @@
 .titleofsetting h2{
     margin-top: 10%;
 }
+@media (min-width: 1025px){
+    .paymentofsetting{
+        position: absolute;
+        top:81.2%;
+        /* bottom:0; */
+        width:90%;
+        height:10%;
+        left: 50%;
+        transform: translate(-50%,0%);
+        max-width: 360px;
+    }
+      
+}
 .basicInfofsetting{
     position: absolute;
     top:17%;
     width:90%;
-    height:28%;
+    height:30%;
     left: 50%;
     transform: translate(-50%,0%);
     max-width: 360px;
+    max-height: 220px;
 }
 .bgofbasicInfo{
+    position: absolute;
     display: flex;
     flex-direction: column;
     position: absolute;
-    top:12%;
+    top:20%;
+    height: 90%;
 }
 .aidataofsetting{
     position: absolute;
     top:48.8%;
     width:90%;
-    height:17.6%;
+    height:25%;
     left: 50%;
     transform: translate(-50%,0%);
     max-width: 360px;
+}
+.bgofaidata{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:12%;
+    height: 80%;
 }
 .bgofaidata{
     display: flex;
@@ -54,7 +80,7 @@
     position: absolute;
     top:70.3%;
     width:90%;
-    height:7%;
+    height:10%;
     left: 50%;
     transform: translate(-50%,0%);
     max-width: 360px;
@@ -62,17 +88,22 @@
 .bgofhistory{
     position: absolute;
     top:50%;
+    
+    height:50%;
 }
 .paymentofsetting{
     position: absolute;
-    top:81.2%;
+    /* top:81.2%; */
+    bottom:0;
     width:90%;
     height:20%;
     left: 50%;
     transform: translate(-50%,0%);
     max-width: 360px;
 }
-.bgofpayment{
+.bgofpaymentofsetting{
+    position: absolute;
+    height:80%;
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -86,7 +117,7 @@
     /* position: absolute; */
     background-size: cover;
     width: 320px;
-    height: 40px;
+    height: 30px;
     border: 1px solid #D7DEEA;
     border-radius: 20px;
     cursor: pointer;
