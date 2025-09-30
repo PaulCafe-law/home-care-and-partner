@@ -4,6 +4,8 @@
 **home-care-and-partner** 是一款支援遠距醫療的前後端整合系統，主要應用於居家照護、病患與照護者之間的線上互動與預約管理。此系統設計強調簡潔的介面與實用功能，協助提升長照照護與醫病溝通的效率與便利性。
 
 ---
+<img width="347" height="721" alt="image" src="https://github.com/user-attachments/assets/df6ad719-3fb6-40f8-84ef-6df04d0530e2" />
+
 
 ## 🚀 功能特色
 
