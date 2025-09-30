@@ -5,6 +5,7 @@
 
 ---
 <img width="347" height="721" alt="image" src="https://github.com/user-attachments/assets/df6ad719-3fb6-40f8-84ef-6df04d0530e2" />
+<img width="344" height="716" alt="image" src="https://github.com/user-attachments/assets/6291a397-2fb6-4d26-8832-d9abd73e2c28" />
 
 
 ## 🚀 功能特色
